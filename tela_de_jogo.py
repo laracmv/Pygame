@@ -4,8 +4,13 @@ from assets import load_assets
 
 def tela_de_jogo(tela):
     
+    ALTURA_PULO = 2
+    VEL_PULO = 20
     
-    
+    PARADO = 0
+    PULANDO = 1
+    CAINDO = 2
+
     class Jogador(pygame.sprite.Sprite):
         def __init__(self, groups, assets):
             # Construtor da classe mãe
@@ -20,9 +25,15 @@ def tela_de_jogo(tela):
             self.groups = groups
             self.assets = assets
 
+            self.state = PARADO
+
         # Esse metodo atualiza a posição do personagem
         def update(self):
+            # Atualiza a movimentação no eixo x
             self.rect.x += self.speedx
+            self.speedy += ALTURA_PULO
+            if self.rect.y > 0:
+                self.state = CAINDO
             self.rect.y += self.speedy
 
             # Manter dentro da tela
@@ -32,8 +43,15 @@ def tela_de_jogo(tela):
                 self.rect.left = 0
             if self.rect.bottom > ALTURA:
                 self.rect.bottom = ALTURA
+                self.speedy = 0
+                self.state = PARADO
             if self.rect.top < 0:
                 self.rect.top = 0
+            
+        def pulo(self):
+            if self.state == PARADO:
+                self.speedy -= VEL_PULO
+                self.state = PULANDO
 
     # funcao do jogo
     # Para ajuste da velocidade
@@ -66,6 +84,7 @@ def tela_de_jogo(tela):
             if event.type == pygame.QUIT:
                 state = MORTO
             if state == JOGANDO:
+                # Teclas jogador 1
                 if event.type == pygame.KEYDOWN:
                     tecla_precionada[event.key] = True
                     if event.key == pygame.K_LEFT:
@@ -73,15 +92,13 @@ def tela_de_jogo(tela):
                     if event.key == pygame.K_RIGHT:
                         Jogador1.speedx += 8
                     if event.key == pygame.K_UP:
-                            Jogador1.speedy -= 8 
+                            Jogador1.pulo() 
                 if event.type == pygame.KEYUP:
                     if event.key in tecla_precionada and tecla_precionada[event.key]:
                         if event.key == pygame.K_LEFT:
                             Jogador1.speedx += 8
                         if event.key == pygame.K_RIGHT:
                             Jogador1.speedx -= 8
-                        if event.key == pygame.K_UP:
-                            Jogador1.speedy += 8
         
         all_sprites.update()
         
