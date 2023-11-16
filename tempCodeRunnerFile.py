@@ -1,1 +1,1 @@
-tela_de_jogo(tela)
+tela

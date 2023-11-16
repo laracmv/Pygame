@@ -77,6 +77,7 @@ def tela_de_jogo(tela):
             self.rect.x += self.speedx
             self.speedy += ALTURA_PULO
             if self.rect.y > 0:
+                # levando em consideração o eixo 0 presente no canto sup esquerdo
                 self.state = CAINDO
             self.rect.y += self.speedy
 
