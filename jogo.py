@@ -6,7 +6,6 @@ pygame.init()
 pygame.mixer.init()
 
 # Gerar tela principal
-
 tela = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Jogo de Luta')
 
@@ -17,6 +16,7 @@ while state != FIM:
     # if state == INICIO:
     # Usa esse 1o if quanto tiver tela inicio
     if state == JOGO:
+        # vai para tela do jogo
         state = tela_de_jogo(tela)
     else:
         state = FIM
