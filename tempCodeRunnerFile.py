@@ -1,1 +1,1 @@
-tela
+Jogador1

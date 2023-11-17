@@ -1,7 +1,7 @@
 import pygame
 from configuracoes import FPS, LARGURA, ALTURA, PRETO, JOGADOR1_LARGURA, JOGADOR1_ALTURA
 from assets import load_assets
-from sprits import Jogador1, Jogador2
+from sprits import Jogador
 
 def tela_de_jogo(tela):
     
@@ -17,8 +17,9 @@ def tela_de_jogo(tela):
     groups['all_sprites'] = all_sprites
 
     #Criar jogadores 
-    jogador1 = Jogador1(groups, assets)
-    jogador2 = Jogador2(groups, assets)
+    # Jogador(grupo, )
+    jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1)
+    jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -67,7 +68,7 @@ def tela_de_jogo(tela):
                             jogador2.speedx +=8
                         if event.key == pygame.K_d:
                             jogador2.speedx -=8
-                            
+
         # Atualiza estado do jogo
         all_sprites.update()
         
