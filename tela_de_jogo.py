@@ -35,7 +35,7 @@ def tela_de_jogo(tela):
         #--Eventos do jogo
         for event in pygame.event.get():
             #---consequências 
-            # se jogo fechar state = morto
+            # se jogo fechar state = morto, acaba o jogo
             if event.type == pygame.QUIT:
                 state = MORTO
 
@@ -49,6 +49,10 @@ def tela_de_jogo(tela):
                         jogador1.speedx += 8
                     if event.key == pygame.K_UP:
                         jogador1.pulo() 
+                    if event.key == pygame.K_q:
+                        # se o jogador 1 apertar espaço e o jogador 2 estiver perto, ele vai poder bater
+                        jogador1.bateu(jogador1, jogador2)
+
                     # Teclas jogador 2
                     if event.key == pygame.K_a:
                         jogador2.speedx -=8
@@ -56,6 +60,10 @@ def tela_de_jogo(tela):
                         jogador2.speedx +=8
                     if event.key == pygame.K_w:
                         jogador2.pulo()
+                    if event.key == pygame.K_SPACE:
+                        # se o jogador 2 apertar espaço e o jogador 1 estiver perto, ele vai poder bater
+                        jogador2.bateu(jogador2, jogador1)
+
                 if event.type == pygame.KEYUP:
                     if event.key in tecla_precionada and tecla_precionada[event.key]:
                         # Teclas jogador 1
@@ -63,14 +71,22 @@ def tela_de_jogo(tela):
                             jogador1.speedx += 8
                         if event.key == pygame.K_RIGHT:
                             jogador1.speedx -= 8
+
                         # Teclas jogador 2
                         if event.key == pygame.K_a:
                             jogador2.speedx +=8
                         if event.key == pygame.K_d:
                             jogador2.speedx -=8
+                        
+                        
 
         # Atualiza estado do jogo
         all_sprites.update()
+
+        # Se o jogador 1 ou 2 perder toda vida o jogo acaba
+        if jogador1.saude <= 0 or jogador2.saude <=0: 
+            state = MORTO
+
         
         # Saídas 
         tela.fill(PRETO)

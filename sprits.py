@@ -15,12 +15,14 @@ class Jogador(pygame.sprite.Sprite):
 
         self.tipo = tipo
         self.image = assets[f'jogador{self.tipo}']
+        self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y
         self.speedx = 0
         self.speedy = 0
         self.assets = assets
+        self.saude = 100
 
         # Usado para decicir se o jogador pode ou não pular
         self.state = PARADO
@@ -50,3 +52,14 @@ class Jogador(pygame.sprite.Sprite):
         if self.state == PARADO:
             self.speedy -= VEL_PULO
             self.state = PULANDO
+    
+    # Se o jogador bater no oponenente, o oponenete perderá vida 
+    def bateu(self, jogador, oponente):
+        self.jogador = jogador
+        self.oponente = oponente
+        if (pygame.sprite.collide_mask(jogador, oponente)):
+            oponente.saude -=10
+            print(f" quando bate: {self.saude}")
+
+
+
