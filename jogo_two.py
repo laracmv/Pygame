@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import largura, altura, l, a, posg, posk, black,post,posg_x, posg_y
+from dados_jogo import *
 from sys import exit
 from assets import *
 
@@ -40,7 +40,7 @@ while True:
     tela.blit(sky_surface,posk) #aqui recebe a surface e a position
     tela.blit(ground_surface,posg)
     tela.blit(texto_surface,post)
-    
+
     posg_x -= 3 #velocidade que a imagem  vai passar na tela
     if posg_x < -100: #se a tela for -100 a posição da galinha volta, isso tem haver com o tam da tela principal
         posg_x = 800 #pra ela voltar pra tela
