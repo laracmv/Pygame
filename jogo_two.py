@@ -1,6 +1,7 @@
 import pygame
 from dados_jogo import largura, altura, l, a, posg, posk, black,post
 from sys import exit
+from assets import *
 
 pygame.init()
 tela = pygame.display.set_mode((largura,altura))
@@ -9,15 +10,16 @@ clock = pygame.time.Clock() #controla os frames por segundo
 
 font = pygame.font.Font(None, 50) #font type, font size
 
+assets = load_assets()
 
 #imagem do céu
-sky_surface = pygame.image.load('C:\\Users\\laisa\\OneDrive\\Área de Trabalho\\imagem_tela_inicio.webp')
+sky_surface = assets[FUNDO]
 
 #pygame.Surface((l,a))
 #teste_surface.fill(branco)
 
 #imagem do chão
-ground_surface = pygame.image.load('C:\\Users\\laisa\\OneDrive\\Área de Trabalho\\ground.jpg')
+ground_surface = assets[PISO]
 
 #texto pra aparecer na surface
 texto_surface = font.render('Batalha no Insper',False,black) #o render mostra o texto, AA, e color
