@@ -33,9 +33,13 @@ branco = (255,255,255)
 
 
 #Ground Surface ----------------------
-posg = (0,385) #primeiro é lado e o segundo e altura
+posg = (0,370) #primeiro é lado e o segundo e altura 385
 
 
 #texto surface ----------------------
 black = (0,0,0)
 post = (250,50) #300 pro lado e 50 pra cima
+
+#galinha--------------------
+posg_x = 600
+posg_y = 250

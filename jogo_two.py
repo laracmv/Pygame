@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import largura, altura, l, a, posg, posk, black,post
+from dados_jogo import largura, altura, l, a, posg, posk, black,post,posg_x, posg_y
 from sys import exit
 from assets import *
 
@@ -21,8 +21,11 @@ sky_surface = assets[FUNDO]
 #imagem do chão
 ground_surface = assets[PISO]
 
+#imagem da galinha, colocar uma aleatória e depois arrumar a foto da galinha sozinha
+galinha_surface = assets['galinha']
+
 #texto pra aparecer na surface
-texto_surface = font.render('Batalha no Insper',False,black) #o render mostra o texto, AA, e color
+texto_surface = font.render("Garden's Battle",False,black) #o render mostra o texto, AA, e color
 
 
 jogo = True
@@ -37,6 +40,10 @@ while True:
     tela.blit(sky_surface,posk) #aqui recebe a surface e a position
     tela.blit(ground_surface,posg)
     tela.blit(texto_surface,post)
+    posg_x -= 3 #velocidade que a imagem  vai passar na tela
+    if posg_x < -100:
+        posg_x = 800 #pra ela voltar pra tela
+    tela.blit(galinha_surface,(posg_x,250))
 
 
     pygame.display.update() #ele atualiza a display.set_mode
