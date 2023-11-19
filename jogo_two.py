@@ -21,7 +21,7 @@ sky_surface = assets[FUNDO]
 #imagem do chão
 ground_surface = assets[PISO]
 
-#imagem da galinha, colocar uma aleatória e depois arrumar a foto da galinha sozinha
+#imagem da galinha, coloquei uma aleatória e depois vou arrumar a foto da galinha sozinha
 galinha_surface = assets['galinha']
 
 #texto pra aparecer na surface
@@ -40,10 +40,11 @@ while True:
     tela.blit(sky_surface,posk) #aqui recebe a surface e a position
     tela.blit(ground_surface,posg)
     tela.blit(texto_surface,post)
+    
     posg_x -= 3 #velocidade que a imagem  vai passar na tela
-    if posg_x < -100:
+    if posg_x < -100: #se a tela for -100 a posição da galinha volta, isso tem haver com o tam da tela principal
         posg_x = 800 #pra ela voltar pra tela
-    tela.blit(galinha_surface,(posg_x,250))
+    tela.blit(galinha_surface,(posg_x,posg_y))
 
 
     pygame.display.update() #ele atualiza a display.set_mode
