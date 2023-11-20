@@ -14,7 +14,7 @@ JOGADOR2_LARGURA = 300
 
 #Cores--------------------------
 PRETO = (0, 0, 0)
-
+CORAL = (235,116,76)
 
 # Estados do jogo-------------------------
 INICIAR = 0
