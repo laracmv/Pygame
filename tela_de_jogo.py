@@ -1,12 +1,11 @@
 import pygame
-from dados_jogo import FPS, LARGURA, ALTURA, PRETO, JOGADOR1_LARGURA, JOGADOR1_ALTURA
+from dados_jogo import FPS, LARGURA, ALTURA, PRETO, JOGADOR1_LARGURA, JOGADOR1_ALTURA, CORAL
 from assets import load_assets
 from sprits import Jogador, Barradevida
 
 def tela_de_jogo(tela):
     
-    # funcao do jogo
-    # Para ajuste da velocidade
+    # funcao do jogo pra ajuste da velocidade
     clock = pygame.time.Clock()
 
     # Carrega o arquivo assets.py
@@ -25,13 +24,20 @@ def tela_de_jogo(tela):
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
+    # ---Dados da contagem regressiva do jogo
+    timermin = 1
+    timersegundos = 30
+    timerfonte = assets["tempo_fonte"]
+    timertexto = timerfonte.render("01:30", True, CORAL)
+    # userevent - evento personalidado o qual é associado com a variavel pygame.time.set_timer, possibilitando ter um delay de 1s a cada valor contado
+    timer = pygame.USEREVENT + 1
+    pygame.time.set_timer(timer, 1000)
+
     MORTO = 0
     JOGANDO = 1
     state = JOGANDO
 
     tecla_precionada = {}
-    timer = pygame.USEREVENT + 1
-    pygame.time.set_timer(timer,1000)
 
     while state != MORTO:
         clock.tick(FPS)
@@ -83,9 +89,23 @@ def tela_de_jogo(tela):
                             jogador2.speedx +=8
                         if event.key == pygame.K_d:
                             jogador2.speedx -=8
-                        
-                        
-
+                
+                # checa eventos de tempo
+                if event.type == timer:
+                    # se o temporizador for maior que 0 vair rodar
+                    if timersegundos > 0 or timermin > 0:
+                        if timersegundos > 0:
+                            timersegundos -= 1
+                        else:
+                            # serve para transformar minutos em segundos
+                            timermin -= 1
+                            timersegundos = 59
+                        timertexto = timerfonte.render("%02d:%02d" % (timermin, timersegundos), True, (255, 255, 200))
+                    else: 
+                        # quando termina o evento de tempo acaba
+                        pygame.time.set_timer(timer,0)
+                        state = MORTO
+                
         # Atualiza estado do jogo
         all_sprites.update()
 
@@ -99,7 +119,9 @@ def tela_de_jogo(tela):
         # Atualiza barra de vida
         barradevidaj1.desenhar_barra(tela, jogador1.saude)
         barradevidaj2.desenhar_barra(tela,jogador2.saude)
-
+        # atualiza o temporizador
+        tela.blit(timertexto, (820, 50))
+    
         pygame.display.update()
 
 

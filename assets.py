@@ -1,5 +1,6 @@
 import pygame
 from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA
+import os
 
 
 PISO = "piso"
@@ -20,5 +21,5 @@ def load_assets():
         #foto da galinha individual, teste
         # assets[GALINHA] = pygame.image.load("assets//img//galinha//images.png").convert_alpha()
         assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
-        
+        assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)
         return assets

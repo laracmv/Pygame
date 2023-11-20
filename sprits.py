@@ -1,5 +1,6 @@
 import pygame
 from dados_jogo import ALTURA, LARGURA, JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, PRETO, CORAL
+import time
 
 ALTURA_PULO = 2
 VEL_PULO = 40
@@ -81,6 +82,3 @@ class Barradevida(pygame.sprite.Sprite):
         superficie.blit(self.image, self.rect)
         # recebe a superfície a ser desenhada, a cor da vida, a posição dele(x,y, largura, altura) e a curvatura da barrra
         pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 19 , 620 * taxa, 80),border_radius=20)
-        
-
-
