@@ -62,7 +62,7 @@ class Jogador(pygame.sprite.Sprite):
             print(f" quando bate: {self.saude}")
 
 class Barradevida(pygame.sprite.Sprite):
-    def __init__(self, saude, assets, x, y):
+    def __init__(self, assets, x, y):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
@@ -72,14 +72,16 @@ class Barradevida(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.saude = saude
        
         # pygame.draw.rect recebe = superfície a ser desenhada, cor, posicao a ser desenha(x e y) e medidas(largura e altura)
     
-    def desenhar_barra(self, superficie):
-        taxa = (self.saude)/100
+    def desenhar_barra(self, superficie, vida):
+        self.vida = vida
+        # taxa = usado para saber quantos porcento do total o jogador tem de vida, também para gerar o tamanho da barra de vida, multiplicando ele pelo tamanho dela
+        taxa = (self.vida)/100
+        # desenha o contorno da barra de vida
         superficie.blit(self.image, self.rect)
-        pygame.draw.rect(superficie, PRETO, (self.rect.x, self.rect.y, 400 * taxa, 100)) 
+        pygame.draw.rect(superficie, PRETO, (self.rect.x, self.rect.y, 620 * taxa, 100)) 
         
 
 

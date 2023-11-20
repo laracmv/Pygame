@@ -20,8 +20,8 @@ def tela_de_jogo(tela):
     # Jogador(grupo, )
     jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1)
     jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2)
-    barradevidaj1 = Barradevida(jogador1.saude, assets, 10, 10)
-    barradevidaj2 = Barradevida( jogador2.saude, assets, 1200, 10)
+    barradevidaj1 = Barradevida(assets, 10, 10)
+    barradevidaj2 = Barradevida(assets, 1200, 10)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -90,11 +90,12 @@ def tela_de_jogo(tela):
             state = MORTO
 
         
-        # Saídas 
+        # ----Saídas 
         tela.fill((72,61,139))
         all_sprites.draw(tela)
-        barradevidaj1.desenhar_barra(tela)
-        barradevidaj2.desenhar_barra(tela)
+        # Atualiza barra de vida
+        barradevidaj1.desenhar_barra(tela, jogador1.saude)
+        barradevidaj2.desenhar_barra(tela,jogador2.saude)
 
         pygame.display.update()
 

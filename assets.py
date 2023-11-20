@@ -18,7 +18,7 @@ def load_assets():
         assets[PISO] = pygame.image.load("assets//img//ground.jpg").convert_alpha()
 
         #foto da galinha individual, teste
-        assets[GALINHA] = pygame.image.load("assets\\img\\galinha\\images.png").convert_alpha()
+        # assets[GALINHA] = pygame.image.load("assets//img//galinha//images.png").convert_alpha()
         assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
         
         return assets
