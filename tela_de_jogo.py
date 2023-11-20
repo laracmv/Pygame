@@ -16,11 +16,11 @@ def tela_de_jogo(tela):
     groups = {}
     groups['all_sprites'] = all_sprites
 
-    #Criar jogadores 
-    # Jogador(grupo, )
+    #--- Criar jogadores 
     jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1)
     jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2)
-    barradevidaj1 = Barradevida(assets, 10, 10)
+    # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
+    barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 1200, 10)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
@@ -30,9 +30,13 @@ def tela_de_jogo(tela):
     state = JOGANDO
 
     tecla_precionada = {}
+    timer = pygame.USEREVENT + 1
+    pygame.time.set_timer(timer,1000)
 
     while state != MORTO:
         clock.tick(FPS)
+        tempo = pygame.time.get_ticks()
+        print(tempo/1000)
 
         #--Eventos do jogo
         for event in pygame.event.get():
@@ -88,7 +92,6 @@ def tela_de_jogo(tela):
         # Se o jogador 1 ou 2 perder toda vida o jogo acaba
         if jogador1.saude <= 0 or jogador2.saude <=0: 
             state = MORTO
-
         
         # ----Saídas 
         tela.fill((72,61,139))

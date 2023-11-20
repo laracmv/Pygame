@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import ALTURA, LARGURA, JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, PRETO
+from dados_jogo import ALTURA, LARGURA, JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, PRETO, CORAL
 
 ALTURA_PULO = 2
 VEL_PULO = 40
@@ -73,15 +73,14 @@ class Barradevida(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
        
-        # pygame.draw.rect recebe = superfície a ser desenhada, cor, posicao a ser desenha(x e y) e medidas(largura e altura)
-    
     def desenhar_barra(self, superficie, vida):
         self.vida = vida
         # taxa = usado para saber quantos porcento do total o jogador tem de vida, também para gerar o tamanho da barra de vida, multiplicando ele pelo tamanho dela
         taxa = (self.vida)/100
         # desenha o contorno da barra de vida
         superficie.blit(self.image, self.rect)
-        pygame.draw.rect(superficie, PRETO, (self.rect.x, self.rect.y, 620 * taxa, 100)) 
+        # recebe a superfície a ser desenhada, a cor da vida, a posição dele(x,y, largura, altura) e a curvatura da barrra
+        pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 19 , 620 * taxa, 80),border_radius=20)
         
 
 

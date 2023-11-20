@@ -5,6 +5,7 @@ from tela_de_jogo import tela_de_jogo
 pygame.init()
 pygame.mixer.init()
 
+
 # Gerar tela principal
 tela = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Jogo de Luta')
