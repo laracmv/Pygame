@@ -1,6 +1,8 @@
+import pygame
+
 # Dados do jogo----------------------------
-LARGURA = 1900
-ALTURA = 959
+LARGURA = 900
+ALTURA = 650
 FPS = 60
 
 #Tamanhos------------------------
@@ -21,25 +23,20 @@ FIM = 2
 
 
 #Largura e altura da Tela Principal-----------------
-largura = 800
-altura = 400
+largura = 900
+altura = 650
 
+#INICIO
+cor_inicio = (128,0,0)
 
-#Sky Surface---------------------
-l = 100
-a = 200
-posk = (0,0)
-branco = (255,255,255)
+# INICIO
+white = (220,220,220)
+cor_inicio = white
 
+largura = 100
+altura = 50
 
-#Ground Surface ----------------------
-posg = (0,370) #primeiro é lado e o segundo e altura 385
+pos = (0,0)
 
-
-#texto surface ----------------------
 black = (0,0,0)
-post = (250,50) #300 pro lado e 50 pra cima
 
-#galinha--------------------
-posg_x = 600
-posg_y = 250
