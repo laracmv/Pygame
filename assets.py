@@ -4,6 +4,7 @@ from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGAD
 
 PISO = "piso"
 FUNDO = "fundo"
+GALINHA = 'galinha'
 
 def load_assets():
         assets = {}
@@ -15,5 +16,9 @@ def load_assets():
         # convert() - usado c imagem de fundo normal
         assets[FUNDO] = pygame.image.load("assets//img//fundo.webp").convert()
         assets[PISO] = pygame.image.load("assets//img//ground.jpg").convert_alpha()
+
+        #foto da galinha individual, teste
+        assets[GALINHA] = pygame.image.load("assets\\img\\galinha\\images.png").convert_alpha()
         assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
+        
         return assets
