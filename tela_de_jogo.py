@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import FPS, LARGURA, ALTURA, PRETO, JOGADOR1_LARGURA, JOGADOR1_ALTURA
+from dados_jogo import *
 from assets import load_assets
 from sprits import Jogador
 

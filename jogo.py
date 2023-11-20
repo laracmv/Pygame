@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import LARGURA, ALTURA, PRETO, JOGO, FIM, INICIAR
+from dados_jogo import *
 from tela_de_jogo import tela_de_jogo
 
 pygame.init()

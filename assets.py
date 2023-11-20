@@ -1,10 +1,7 @@
 import pygame
-from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA
+from dados_jogo import *
 
 
-PISO = "piso"
-FUNDO = "fundo"
-GALINHA = 'galinha'
 
 def load_assets():
         assets = {}
@@ -14,9 +11,5 @@ def load_assets():
         assets['jogador2'] = pygame.image.load("assets//img//lutador2.png").convert_alpha()
         assets['jogador2'] = pygame.transform.scale(assets['jogador2'], (JOGADOR2_LARGURA, JOGADOR2_ALTURA))
         # convert() - usado c imagem de fundo normal
-        assets[FUNDO] = pygame.image.load("assets//img//fundo.webp").convert()
-        assets[PISO] = pygame.image.load("assets//img//ground.jpg").convert_alpha()
-
-        #foto da galinha individual, teste
-        assets[GALINHA] = pygame.image.load("assets\\img\\galinha\\images.png").convert_alpha()
+        
         return assets

@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import ALTURA, LARGURA, JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA
+from dados_jogo import *
 
 ALTURA_PULO = 2
 VEL_PULO = 40
@@ -60,6 +60,5 @@ class Jogador(pygame.sprite.Sprite):
         if (pygame.sprite.collide_mask(jogador, oponente)):
             oponente.saude -=10
             print(f" quando bate: {self.saude}")
-
 
 
