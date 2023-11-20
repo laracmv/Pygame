@@ -15,4 +15,5 @@ def load_assets():
         # convert() - usado c imagem de fundo normal
         assets[FUNDO] = pygame.image.load("assets//img//fundo.webp").convert()
         assets[PISO] = pygame.image.load("assets//img//ground.jpg").convert_alpha()
+        assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
         return assets

@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import ALTURA, LARGURA, JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA
+from dados_jogo import ALTURA, LARGURA, JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, PRETO
 
 ALTURA_PULO = 2
 VEL_PULO = 40
@@ -61,5 +61,25 @@ class Jogador(pygame.sprite.Sprite):
             oponente.saude -=10
             print(f" quando bate: {self.saude}")
 
+class Barradevida(pygame.sprite.Sprite):
+    def __init__(self, saude, assets, x, y):
+        # Construtor da classe mãe
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = assets['barra_saude']
+        self.assets = assets
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.saude = saude
+       
+        # pygame.draw.rect recebe = superfície a ser desenhada, cor, posicao a ser desenha(x e y) e medidas(largura e altura)
+    
+    def desenhar_barra(self, superficie):
+        taxa = (self.saude)/100
+        superficie.blit(self.image, self.rect)
+        pygame.draw.rect(superficie, PRETO, (self.rect.x, self.rect.y, 400 * taxa, 100)) 
+        
 
 

@@ -18,7 +18,7 @@ while state != FIM:
     if state == JOGO:
         # vai para tela do jogo
         state = tela_de_jogo(tela)
-    else:
+    else:  
         state = FIM
     
     tela.fill((PRETO))

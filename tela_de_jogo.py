@@ -1,7 +1,7 @@
 import pygame
 from dados_jogo import FPS, LARGURA, ALTURA, PRETO, JOGADOR1_LARGURA, JOGADOR1_ALTURA
 from assets import load_assets
-from sprits import Jogador
+from sprits import Jogador, Barradevida
 
 def tela_de_jogo(tela):
     
@@ -20,6 +20,8 @@ def tela_de_jogo(tela):
     # Jogador(grupo, )
     jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1)
     jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2)
+    barradevidaj1 = Barradevida(jogador1.saude, assets, 10, 10)
+    barradevidaj2 = Barradevida( jogador2.saude, assets, 1200, 10)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -89,8 +91,10 @@ def tela_de_jogo(tela):
 
         
         # Saídas 
-        tela.fill(PRETO)
+        tela.fill((72,61,139))
         all_sprites.draw(tela)
+        barradevidaj1.desenhar_barra(tela)
+        barradevidaj2.desenhar_barra(tela)
 
         pygame.display.update()
 
