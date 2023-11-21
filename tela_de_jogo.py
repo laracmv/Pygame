@@ -20,7 +20,7 @@ def tela_de_jogo(tela):
     jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2)
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
-    barradevidaj2 = Barradevida(assets, 1200, 10)
+    barradevidaj2 = Barradevida(assets, 1200, 10) 
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -54,28 +54,28 @@ def tela_de_jogo(tela):
                 if event.type == pygame.KEYDOWN:
                     tecla_precionada[event.key] = True
                     # Teclas jogador 1
-                    if event.key == pygame.K_LEFT:
+                    if event.key == pygame.K_a:
                         jogador1.speedx -= 8
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == pygame.K_d:
                         jogador1.speedx += 8
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.K_w:
                         jogador1.pulo()
-                    if event.key == pygame.K_DOWN:
-                        jogador2.defesa()
-                    if event.key == pygame.K_SPACE and jogador2.defende == False:
+                    if event.key == pygame.K_s:
+                        jogador1.defesa()
+                    if event.key == pygame.K_q and jogador2.defende == False:
                         # se o jogador 1 apertar espaço e o jogador 2 estiver perto, ele vai poder bater
                         jogador1.bateu(jogador1, jogador2)
 
                     # Teclas jogador 2
-                    if event.key == pygame.K_a:
+                    if event.key == pygame.K_LEFT:
                         jogador2.speedx -=8
-                    if event.key == pygame.K_d:
+                    if event.key == pygame.K_RIGHT:
                         jogador2.speedx +=8
-                    if event.key == pygame.K_w:
+                    if event.key == pygame.K_UP:
                         jogador2.pulo()
-                    if event.key ==pygame.K_s:
+                    if event.key == pygame.K_DOWN:
                         jogador2.defesa()
-                    if event.key == pygame.K_q and jogador1.defende == False: 
+                    if event.key == pygame.K_SPACE and jogador1.defende == False: 
                         # consegue atacar somente se o oponente não estiver defendendo
                         # se o jogador 2 apertar a tecla e o jogador 1 estiver perto, ele vai poder bater
                         jogador2.bateu(jogador2, jogador1)
@@ -83,20 +83,20 @@ def tela_de_jogo(tela):
                 if event.type == pygame.KEYUP:
                     if event.key in tecla_precionada and tecla_precionada[event.key]:
                         # Teclas jogador 1
-                        if event.key == pygame.K_LEFT:
+                        if event.key == pygame.K_a:
                             jogador1.speedx += 8
-                        if event.key == pygame.K_RIGHT:
+                        if event.key == pygame.K_d:
                             jogador1.speedx -= 8
-                        # if event.key == pygame.K_DOWN:
-                        #     jogador1.defende = False
+                        # if event.key == pygame.K_s:
+                        #     jogador1.defesa()
 
                         # Teclas jogador 2
-                        if event.key == pygame.K_a:
+                        if event.key == pygame.K_LEFT:
                             jogador2.speedx +=8
-                        if event.key == pygame.K_d:
+                        if event.key == pygame.K_RIGHT:
                             jogador2.speedx -=8
-                        # if event.key == pygame.K_s:
-                        #     jogador2.defende = False
+                        # if event.key == pygame.K_DOWN:
+                        #     jogador2.defesa()
                 
                 # checa eventos de tempo
                 if event.type == timer:
