@@ -1,7 +1,7 @@
 import pygame
 
 # Dados do jogo----------------------------
-LARGURA = 900
+LARGURA = 1200
 ALTURA = 650
 FPS = 60
 
