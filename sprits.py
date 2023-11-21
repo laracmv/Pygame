@@ -24,6 +24,11 @@ class Jogador(pygame.sprite.Sprite):
         self.assets = assets
         self.saude = 100
         self.defende = False
+        
+        # pode ou não bater
+        self.ultima_porrada = pygame.time.get_ticks()
+        # numero de ticks para pode bater de novo
+        self.bater_ticks = 500
 
         # Usado para decicir se o jogador pode ou não pular
         self.state = PARADO
@@ -58,9 +63,16 @@ class Jogador(pygame.sprite.Sprite):
     def bateu(self, jogador, oponente):
         self.jogador = jogador
         self.oponente = oponente
-        if (pygame.sprite.collide_mask(jogador, oponente)):
-            oponente.saude -=10
-            print(f" quando bate: {self.saude}")
+
+        # serve para atrasar a porrada 
+        now = pygame.time.get_ticks()
+        ticks_transcorridos = now - self.ultima_porrada
+
+        if ticks_transcorridos > self.bater_ticks:
+            self.ultima_porrada = now
+            if (pygame.sprite.collide_mask(jogador, oponente)):
+                oponente.saude -=10
+                print("Bateu")
 
 class Barradevida(pygame.sprite.Sprite):
     def __init__(self, assets, x, y):
