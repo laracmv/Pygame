@@ -7,6 +7,8 @@ import os
 #FUNDO = "fundo"
 #GALINHA = 'galinha'
 
+BOTAO1 = 'botao1'
+
 def load_assets():
         assets = {}
         # convert_alpha() - uso com imagem de fundo transparente
@@ -22,4 +24,6 @@ def load_assets():
         # assets[GALINHA] = pygame.image.load("assets//img//galinha//images.png").convert_alpha()
         assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
         assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)
+
+        assets['botao1'] = pygame.image.load('assets\\img\\botao.jpg')
         return assets
