@@ -8,7 +8,7 @@ pygame.mixer.init()
 
 # Gerar tela principal
 tela = pygame.display.set_mode((LARGURA, ALTURA))
-sqpygame.display.set_caption('Jogo de Luta')
+pygame.display.set_caption('Jogo de Luta')
 
 
 state = JOGO
