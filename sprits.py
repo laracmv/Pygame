@@ -23,6 +23,7 @@ class Jogador(pygame.sprite.Sprite):
         self.speedy = 0
         self.assets = assets
         self.saude = 100
+        self.defende = False
 
         # Usado para decicir se o jogador pode ou não pular
         self.state = PARADO
