@@ -54,3 +54,6 @@ cor_texto_botao = black
 #largura e altura do botão
 largura = 100
 altura = 50
+
+#mudar cor na hora que passa o mouse no botão
+cinza = (128,128,128)

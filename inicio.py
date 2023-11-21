@@ -27,14 +27,16 @@ class Botao:
     def clicar(self):
         mouse_pos = pygame.mouse.get_pos() #saber a posição do mouse quando for clicar no botão
         if self.retangulo_cima.collidepoint(mouse_pos): #se nosso mouse ta no nosso botão
-            if pygame.mouse.get_pressed()[0]: #rever
-                self.pressed(True)
+            self.cor_cima = cinza
+
+            if pygame.mouse.get_pressed()[0]: #rse o jogador está pressionando o botao
+                self.pressed = True #se ele estiver pressionando, então é verdade
             else:
                 if self.pressed == True:
                     print('click')
-                    self.pressed = False
-
-
+                    self.pressed = False #so mostra o click se foi clicado, se não não
+        else:
+            self.cor_cima = cor_inicio
 
 
 # Inicializa o Pygame após as definições de cores
