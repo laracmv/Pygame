@@ -10,11 +10,13 @@ JOGADOR1_ALTURA = 228
 JOGADOR1_LARGURA = 300
 JOGADOR2_ALTURA = 228
 JOGADOR2_LARGURA = 300
-
+BMANA_LARGURA = 650
+BMANA_ALTURA = 50
 
 #Cores--------------------------
 PRETO = (0, 0, 0)
 CORAL = (235,116,76)
+AZUL = (60,155,211)
 
 # Estados do jogo-------------------------
 INICIAR = 0

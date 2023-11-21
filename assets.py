@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA
+from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, BMANA_LARGURA, BMANA_ALTURA
 import os
 
 
@@ -23,6 +23,8 @@ def load_assets():
         #foto da galinha individual, teste
         # assets[GALINHA] = pygame.image.load("assets//img//galinha//images.png").convert_alpha()
         assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
+        assets['barra_mana'] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
+        assets['barra_mana'] = pygame.transform.scale(assets['barra_mana'], (BMANA_LARGURA, BMANA_ALTURA))
         assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)
 
         assets['botao1'] = pygame.image.load('assets\\img\\botao.jpg')

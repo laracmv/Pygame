@@ -1,7 +1,7 @@
 import pygame
 from dados_jogo import *
 from assets import load_assets
-from sprits import Jogador, Barradevida
+from sprits import Jogador, Barradevida, BarraMana
 
 def tela_de_jogo(tela):
     
@@ -21,6 +21,8 @@ def tela_de_jogo(tela):
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 1200, 10) 
+    barramanaj1 = BarraMana(assets, 30, 140)
+    barramanaj2 = BarraMana(assets, 1200, 140)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -87,16 +89,16 @@ def tela_de_jogo(tela):
                             jogador1.speedx += 8
                         if event.key == pygame.K_d:
                             jogador1.speedx -= 8
-                        # if event.key == pygame.K_s:
-                        #     jogador1.defesa()
+                        if event.key == pygame.K_s:
+                            jogador1.defende = False
 
                         # Teclas jogador 2
                         if event.key == pygame.K_LEFT:
                             jogador2.speedx +=8
                         if event.key == pygame.K_RIGHT:
                             jogador2.speedx -=8
-                        # if event.key == pygame.K_DOWN:
-                        #     jogador2.defesa()
+                        if event.key == pygame.K_DOWN:
+                            jogador2.defende = False
                 
                 # checa eventos de tempo
                 if event.type == timer:
@@ -127,6 +129,8 @@ def tela_de_jogo(tela):
         # Atualiza barra de vida
         barradevidaj1.desenhar_barra(tela, jogador1.saude)
         barradevidaj2.desenhar_barra(tela,jogador2.saude)
+        barramanaj1.drawbarra(tela)
+        barramanaj2.drawbarra(tela)
         # atualiza o temporizador
         tela.blit(timertexto, (820, 50))
     
