@@ -60,9 +60,11 @@ def tela_de_jogo(tela):
                     if event.key == pygame.K_RIGHT:
                         jogador1.speedx += 8
                     if event.key == pygame.K_UP:
-                        jogador1.pulo() 
-                    if event.key == pygame.K_q:
-                        # se o jogador 1 apertar espaço e o jogador 2 estiver perto, ele vai poder bater
+                        jogador1.pulo()
+                    if event.key == pygame.K_DOWN:
+                        jogador1.defende = True 
+                    if event.key == pygame.K_SPACE:
+                        # se o jogador 2 apertar espaço e o jogador 1 estiver perto, ele vai poder bater
                         jogador1.bateu(jogador1, jogador2)
 
                     # Teclas jogador 2
@@ -72,10 +74,12 @@ def tela_de_jogo(tela):
                         jogador2.speedx +=8
                     if event.key == pygame.K_w:
                         jogador2.pulo()
-                    if event.key == pygame.K_SPACE:
-                        # se o jogador 2 apertar espaço e o jogador 1 estiver perto, ele vai poder bater
+                    # if event.key ==pygame.K_s:
+                    #     jogador2.defende = True
+                    if event.key == pygame.K_q and jogador2.defende == False:
+                        # se o jogador 1 apertar espaço e o jogador 2 estiver perto, ele vai poder bater
                         jogador2.bateu(jogador2, jogador1)
-
+                    
                 if event.type == pygame.KEYUP:
                     if event.key in tecla_precionada and tecla_precionada[event.key]:
                         # Teclas jogador 1
@@ -89,6 +93,8 @@ def tela_de_jogo(tela):
                             jogador2.speedx +=8
                         if event.key == pygame.K_d:
                             jogador2.speedx -=8
+                        # if event.key ==pygame.K_s:
+                        #     jogador2.defende = False
                 
                 # checa eventos de tempo
                 if event.type == timer:
