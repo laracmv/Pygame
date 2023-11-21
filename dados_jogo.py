@@ -26,17 +26,35 @@ FIM = 2
 largura = 900
 altura = 650
 
-#INICIO
+#INICIO -------------------------------------------------------------------
 cor_inicio = (128,0,0)
 
-# INICIO
+# TELA INICIO
+pos = (0,0) #rever isso
+
+#tamanho da tela inicio
+tela_inicio = (1050,750)
+
+#cor de fundo da tela inicio
+fundo_inicio = (128,0,0)
+
+#BOTÃO 1 ----------------
+
+#cor de fundo da imagem do botão
 white = (220,220,220)
 cor_inicio = white
 
+#onde o botão fica na tela inicio
+botao_top = (400,350)
+botao_baixo = (400,400)
+
+#cor do texto que fica dentro do botão
+black = (0,0,0)
+cor_texto_botao = black
+
+#largura e altura do botão
 largura = 100
 altura = 50
 
-pos = (0,0)
-
-black = (0,0,0)
-
+#mudar cor na hora que passa o mouse no botão
+cinza = (128,128,128)
