@@ -45,8 +45,11 @@ white = (220,220,220)
 cor_inicio = white
 
 #onde o botão fica na tela inicio
-botao_top = (400,350)
-botao_baixo = (400,400)
+botao_top = (100,175) #o primeiro está em x, na horizontal, lado esquerdo é perto do 0, e o outro regula a altura
+botao_baixo = (100,480)
+botaoA = (700,175)
+botaoB = (700,480)
+
 
 #cor do texto que fica dentro do botão
 black = (0,0,0)
