@@ -46,6 +46,7 @@ cor_inicio = white
 
 #onde o botão fica na tela inicio
 botao_top = (400,350)
+botao_baixo = (400,400)
 
 #cor do texto que fica dentro do botão
 black = (0,0,0)
