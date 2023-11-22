@@ -85,11 +85,10 @@ class Jogador(pygame.sprite.Sprite):
             self.ultima_porrada = now
             if (pygame.sprite.collide_mask(jogador, oponente)):
                 oponente.saude -=10
+                # se conseguir bater adiciona mais um golpe no dic pro jogador e zera o oponente.
                 self.dicgolpes[f'jogador{self.tipojogador}'] +=1
                 self.dicgolpes[f'jogador{self.tipooponente}'] = 0
             print(self.dicgolpes)
-     
-        
 
     def defesa(self):
         nowdefesa = pygame.time.get_ticks() 
@@ -123,11 +122,12 @@ class Barradevida(pygame.sprite.Sprite):
         pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 19 , 620 * taxa, 80),border_radius=20)
 
 class BarraMana(pygame.sprite.Sprite):
-    def __init__(self, assets, x, y, jogador):
+    def __init__(self, assets, x, y, tipojogador, tipooponente):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
-        self.jogador = jogador
+        self.tipojogador = tipojogador
+        self.tipooponente = tipooponente
         self.image = assets['barra_mana']
         self.assets = assets
         self.mask = pygame.mask.from_surface(self.image)
@@ -153,6 +153,16 @@ class BarraMana(pygame.sprite.Sprite):
         ticks_transcorridosbarra = nowbarra - self.ultimo_mana
 
         if ticks_transcorridosbarra > self.ticks_mana:
-            self.ultimo_mana = nowbarra
-            # soma o valor da mana com a taxa, o limitando a 100 (largura maxima)
-            self.mana = min(self.mana + self.taxamana, 100)
+            # if para quando ocorre combos, acessa o dicionario de golpes e ve que bateu sem parar
+            if Jogador.dicgolpes[f'jogador{self.tipojogador}'] > 2:
+                print("funcionou")
+                self.taxamana = 2
+                self.ultimo_mana = nowbarra
+                self.mana = min(self.mana + self.taxamana, 100)
+            else:
+                # if de uma barra de mana normal
+                self.taxa = 1
+                self.ultimo_mana = nowbarra
+                # soma o valor da mana com a taxa, o limitando a 100 (largura maxima)
+                self.mana = min(self.mana + self.taxamana, 100)
+        
