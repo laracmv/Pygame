@@ -24,7 +24,7 @@ class Jogador(pygame.sprite.Sprite):
         self.assets = assets
         self.saude = 100
         self.defende = False
-        
+
         # pode ou não bater
         self.ultima_porrada = pygame.time.get_ticks()
         # ultima defesa
@@ -85,7 +85,6 @@ class Jogador(pygame.sprite.Sprite):
             self.defende = True
             print("Defendeu")
 
-
 class Barradevida(pygame.sprite.Sprite):
     def __init__(self, assets, x, y):
         # Construtor da classe mãe
@@ -108,10 +107,11 @@ class Barradevida(pygame.sprite.Sprite):
         pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 19 , 620 * taxa, 80),border_radius=20)
 
 class BarraMana(pygame.sprite.Sprite):
-    def __init__(self, assets, x, y):
+    def __init__(self, assets, x, y, jogador):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
+        self.jogador = jogador
         self.image = assets['barra_mana']
         self.assets = assets
         self.mask = pygame.mask.from_surface(self.image)
@@ -119,6 +119,24 @@ class BarraMana(pygame.sprite.Sprite):
         self.centerx = x
         self.centery = y
 
+        # mana - mana inicial
+        self.mana = 0
+        # taxamana - quantos pixels vai aumentar 
+        self.taxamana = 1
+        self.ultimo_mana = pygame.time.get_ticks()
+        # ticks_mana - quantos milisegundos vai ter entre cada incremento
+        self.ticks_mana = 100
+
     def drawbarra(self, superficie):
+        larguramana = (620 * (self.mana / 100))
         superficie.blit(self.image, (self.centerx, self.centery))
-        pygame.draw.rect(superficie, AZUL, (self.centerx + 13, self.centery + 10, 620, 30),border_radius = 8)
+        pygame.draw.rect(superficie, AZUL, (self.centerx + 13, self.centery + 10, larguramana, 30),border_radius = 8)
+
+    def update(self):
+        nowbarra = pygame.time.get_ticks()
+        ticks_transcorridosbarra = nowbarra - self.ultimo_mana
+
+        if ticks_transcorridosbarra > self.ticks_mana:
+            self.ultimo_mana = nowbarra
+            # soma o valor da mana com a taxa, o limitando a 100 (largura maxima)
+            self.mana = min(self.mana + self.taxamana, 100)

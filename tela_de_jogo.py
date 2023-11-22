@@ -21,8 +21,8 @@ def tela_de_jogo(tela):
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 1200, 10) 
-    barramanaj1 = BarraMana(assets, 30, 140)
-    barramanaj2 = BarraMana(assets, 1200, 140)
+    barramanaj1 = BarraMana(assets, 30, 140, 1)
+    barramanaj2 = BarraMana(assets, 1200, 140, 2)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -118,6 +118,9 @@ def tela_de_jogo(tela):
                 
         # Atualiza estado do jogo
         all_sprites.update()
+        barramanaj1.update()
+        barramanaj2.update()
+
 
         # Se o jogador 1 ou 2 perder toda vida o jogo acaba
         if jogador1.saude <= 0 or jogador2.saude <=0: 
