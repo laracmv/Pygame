@@ -16,8 +16,8 @@ def tela_de_jogo(tela):
     groups['all_sprites'] = all_sprites
 
     #--- Criar jogadores 
-    jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1)
-    jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2)
+    jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1,2)
+    jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2,1)
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 1200, 10) 

@@ -9,12 +9,16 @@ PULANDO = 1
 CAINDO = 2
 
 class Jogador(pygame.sprite.Sprite):
-    def __init__(self, assets, x, y, tipo):
+    # dicionario para a classe inteira, usado para criar um unico dicionario com numero de golpes consecutivos 
+    dicgolpes = {}
+
+    def __init__(self, assets, x, y, tipojogador, tipooponente):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
-        self.tipo = tipo
-        self.image = assets[f'jogador{self.tipo}']
+        self.tipojogador = tipojogador
+        self.tipooponente = tipooponente
+        self.image = assets[f'jogador{self.tipojogador}']
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = x
@@ -24,6 +28,12 @@ class Jogador(pygame.sprite.Sprite):
         self.assets = assets
         self.saude = 100
         self.defende = False
+
+        # adiciona os jogadores como chaves do dicionario e o numero de golpes como valores
+        if f'jogador{self.tipojogador}' not in Jogador.dicgolpes:
+            Jogador.dicgolpes[f'jogador{self.tipojogador}'] = 0
+
+        print(Jogador.dicgolpes)
 
         # pode ou não bater
         self.ultima_porrada = pygame.time.get_ticks()
@@ -75,6 +85,11 @@ class Jogador(pygame.sprite.Sprite):
             self.ultima_porrada = now
             if (pygame.sprite.collide_mask(jogador, oponente)):
                 oponente.saude -=10
+                self.dicgolpes[f'jogador{self.tipojogador}'] +=1
+                self.dicgolpes[f'jogador{self.tipooponente}'] = 0
+            print(self.dicgolpes)
+     
+        
 
     def defesa(self):
         nowdefesa = pygame.time.get_ticks() 
@@ -84,6 +99,7 @@ class Jogador(pygame.sprite.Sprite):
             self.ultima_defesa = nowdefesa
             self.defende = True
             print("Defendeu")
+    
 
 class Barradevida(pygame.sprite.Sprite):
     def __init__(self, assets, x, y):
