@@ -26,6 +26,7 @@ def load_assets():
         assets['barra_mana'] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
         assets['barra_mana'] = pygame.transform.scale(assets['barra_mana'], (BMANA_LARGURA, BMANA_ALTURA))
         assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)
-
+        # assets["galinha_idle"] = pygame.image.load("assets//img//galinha//idle.png").convert_alpha()
+        
         assets['botao1'] = pygame.image.load('assets\\img\\botao.jpg')
         return assets

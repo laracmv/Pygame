@@ -1,5 +1,6 @@
 import pygame
 from dados_jogo import *
+from youtube import *
 
 ALTURA_PULO = 2
 VEL_PULO = 40
@@ -12,22 +13,27 @@ class Jogador(pygame.sprite.Sprite):
     # dicionario para a classe inteira, usado para criar um unico dicionario com numero de golpes consecutivos 
     dicgolpes = {}
 
-    def __init__(self, assets, x, y, tipojogador, tipooponente):
+    def __init__(self,luta_dic, x, y, tipojogador, tipooponente):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
         self.tipojogador = tipojogador
         self.tipooponente = tipooponente
-        self.image = assets[f'jogador{self.tipojogador}']
+        # self.image = assets[f'jogador{self.tipojogador}']
+        self.img_index = 0
+        self.atc_index = 0
+        self.image = luta_dic['idle'][self.img_index]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y
         self.speedx = 0
         self.speedy = 0
-        self.assets = assets
+        # self.assets = assets
         self.saude = 100
         self.defende = False
+        self.luta_dic = luta_dic
+        
 
         # adiciona os jogadores como chaves do dicionario e o numero de golpes como valores
         if f'jogador{self.tipojogador}' not in Jogador.dicgolpes:
@@ -48,6 +54,12 @@ class Jogador(pygame.sprite.Sprite):
 
     # Esse metodo atualiza a posição do personagem
     def update(self):
+        self.img_index +=1
+        if self.img_index >= len(self.luta_dic['idle']):
+            self.img_index = 0
+
+        self.image = self.luta_dic['idle'][self.img_index]
+
         # Atualiza a movimentação no eixo x
         self.rect.x += self.speedx
         self.speedy += ALTURA_PULO

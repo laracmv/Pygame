@@ -2,6 +2,7 @@ import pygame
 from dados_jogo import *
 from assets import load_assets
 from sprits import Jogador, Barradevida, BarraMana
+from youtube import * 
 
 def tela_de_jogo(tela):
     
@@ -16,8 +17,8 @@ def tela_de_jogo(tela):
     groups['all_sprites'] = all_sprites
 
     #--- Criar jogadores 
-    jogador1 = Jogador(assets, LARGURA / 4, ALTURA - 10, 1,2)
-    jogador2 = Jogador(assets, LARGURA / 1.5, ALTURA - 10, 2,1)
+    jogador1 = Jogador(galinha, LARGURA / 4, ALTURA - 10, 1,2)
+    jogador2 = Jogador(galinha, LARGURA / 1.5, ALTURA - 10, 2,1)
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 1200, 10) 
@@ -129,6 +130,9 @@ def tela_de_jogo(tela):
         # ----Saídas 
         tela.fill((72,61,139))
         all_sprites.draw(tela)
+
+        # ela.blit(pegaimagem(assets['galinha_idle'],32,34,3), (0,0))t
+        
         # Atualiza barra de vida
         barradevidaj1.desenhar_barra(tela, jogador1.saude)
         barradevidaj2.desenhar_barra(tela,jogador2.saude)
