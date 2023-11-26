@@ -54,11 +54,19 @@ class Jogador(pygame.sprite.Sprite):
 
     # Esse metodo atualiza a posição do personagem
     def update(self):
-        self.img_index +=1
-        if self.img_index >= len(self.luta_dic['idle']):
-            self.img_index = 0
+    
+        if self.atc_index != 0: #animacao quando ocorre um ataque
+            if self.atc_index < len(self.luta_dic['hit']):
+                self.image = self.luta_dic['hit'][self.atc_index]
+                self.atc_index += 1
+            else:
+                self.atc_index = 0
+        else: # animacao quando esta parado
+            self.img_index += 1
+            if self.img_index >= len(self.luta_dic['idle']):
+                self.img_index = 0
 
-        self.image = self.luta_dic['idle'][self.img_index]
+            self.image = self.luta_dic['idle'][self.img_index]
 
         # Atualiza a movimentação no eixo x
         self.rect.x += self.speedx
@@ -89,6 +97,7 @@ class Jogador(pygame.sprite.Sprite):
         self.jogador = jogador
         self.oponente = oponente
 
+
         # serve para atrasar a porrada 
         now = pygame.time.get_ticks()
         ticks_transcorridos = now - self.ultima_porrada
@@ -100,6 +109,7 @@ class Jogador(pygame.sprite.Sprite):
                 # se conseguir bater adiciona mais um golpe no dic pro jogador e zera o oponente.
                 self.dicgolpes[f'jogador{self.tipojogador}'] +=1
                 self.dicgolpes[f'jogador{self.tipooponente}'] = 0
+                self.atc_index = 1
             print(self.dicgolpes)
 
     def defesa(self):

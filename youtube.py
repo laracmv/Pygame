@@ -31,6 +31,7 @@ while i<13:
 #Animação hit galinha
 ghit0 = pygame.image.load("assets//img//galinha//hit//tile000.png")
 ghit0 = pygame.transform.scale(ghit0, (galinha_altura * 4 ,galinha_largura * 4 ))
+galinha_dic["hit"].append(ghit0)
 
 i = 1
 while i<5:
@@ -38,7 +39,6 @@ while i<5:
     ghit = pygame.transform.scale(ghit, (galinha_altura * 4 ,galinha_largura * 4 ))
     galinha_dic["hit"].append(ghit)
     i+=1
-    
 
 # def imagem(dic,lista):
 #     # for x, tipo in enumerate(dic): # x = indice da key , tipo = key
