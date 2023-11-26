@@ -1,10 +1,6 @@
 import pygame
 
-# galinha_lista = [pygame.image.load("assets//img//galinha//idle.png"),
-#                 pygame.image.load("assets//img//galinha//hit.png"),
-#                 pygame.image.load("assets//img//galinha//run.png")
-#                 ]
-
+#------para animações galinha
 galinha_dic = {"idle": [],
                 "hit": [],
                 "run": []
@@ -40,13 +36,12 @@ while i<5:
     galinha_dic["hit"].append(ghit)
     i+=1
 
-# def imagem(dic,lista):
-#     # for x, tipo in enumerate(dic): # x = indice da key , tipo = key
-#     #     img_largura = lista[x].get_width() # pega largura de indice(x) 0
-#     #     galinha_altura = lista[x].get_height() # pega altura de indice(x) 0
-#         for i in range(13):
-#             img = lista[x].subsurface(i*galinha_altura, 0,galinha_altura, galinha_altura)
-#             dic[tipo].append(pygame.transform.scale(img, (galinha_altura,galinha_altura)))
-#     return dic
+
+#------para animações sapo 
+sapo_dic = {"idle": [],
+                "hit": [],
+                "run": []
+                }
+
 
 galinha = galinha_dic
