@@ -2,7 +2,7 @@ import pygame
 from dados_jogo import *
 from assets import load_assets
 from sprits import Jogador, Barradevida, BarraMana
-from youtube import * 
+from animacao import * 
 
 def tela_de_jogo(tela):
     
@@ -17,7 +17,7 @@ def tela_de_jogo(tela):
     groups['all_sprites'] = all_sprites
 
     #--- Criar jogadores 
-    jogador1 = Jogador(galinha, LARGURA / 4, ALTURA - 10, 1,2)
+    jogador1 = Jogador(sapo, LARGURA / 4, ALTURA - 10, 1,2)
     jogador2 = Jogador(galinha, LARGURA / 1.5, ALTURA - 10, 2,1)
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)

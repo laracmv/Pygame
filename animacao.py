@@ -54,14 +54,24 @@ i = 1
 while i < 11:
     if i>=1 and i<10:
         sapoidle = pygame.image.load(f'assets//img//sapo//idle//tile00{i}.png')
-        sapoidle = pygame.transform.scale(gidle , (sapo_altura * 4 ,sapo_altura * 4 ))
+        sapoidle = pygame.transform.scale(sapoidle, (sapo_altura * 4 ,sapo_altura * 4 ))
     else:
         sapoidle = pygame.image.load(f'assets//img//sapo//idle//tile0{i}.png')
-        sapoidle = pygame.transform.scale(gidle , (sapo_altura * 4 ,sapo_altura * 4 ))
-    sapo_dic["idle"].append(gidle)
+        sapoidle = pygame.transform.scale(sapoidle, (sapo_altura * 4 ,sapo_altura * 4 ))
+    sapo_dic["idle"].append(sapoidle)
     i+=1
 
 #animacao sapo batendo
+sapohit0 = pygame.image.load("assets//img//sapo//hit//tile000.png")
+sapohit0= pygame.transform.scale(sapohit0, (sapo_altura * 4 ,sapo_largura * 4 ))
+sapo_dic["hit"].append(sapohit0)
 
+i=1
+while i<7:
+    sapohit = pygame.image.load(f'assets//img//sapo//hit//tile00{i}.png')
+    sapohit = pygame.transform.scale(sapohit, (sapo_altura * 4 ,sapo_altura * 4 ))
+    sapo_dic["hit"].append(sapohit)
+    i+=1
 
 galinha = galinha_dic
+sapo = sapo_dic

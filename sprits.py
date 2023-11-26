@@ -1,6 +1,6 @@
 import pygame
 from dados_jogo import *
-from youtube import *
+from animacao import *
 
 ALTURA_PULO = 2
 VEL_PULO = 40
