@@ -3,7 +3,6 @@ import pygame
 #------para animações galinha
 galinha_dic = {"idle": [],
                 "hit": [],
-                "run": []
                 }
 
 #para animacao da galinha parada
@@ -40,7 +39,6 @@ while i<5:
 #------para animações sapo 
 sapo_dic = {"idle": [],
                 "hit": [],
-                "run": []
                 }
 
 #para animacao do sapo parada
