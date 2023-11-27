@@ -42,6 +42,7 @@ def tela_de_jogo(tela):
 
     tecla_precionada = {}
 
+    pygame.mixer.music.play(loops=-1)
     while state != MORTO:
         clock.tick(FPS)
         tempo = pygame.time.get_ticks()
