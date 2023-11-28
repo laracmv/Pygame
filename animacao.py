@@ -84,34 +84,39 @@ pedra_dic = {"idle": [],
 
 #animacao idle pedra
 pedraidle0 = pygame.image.load("assets//img//pedra//idle//tile000.png")
+pedraidle0 = pygame.transform.flip(pedraidle0, True, False)
 pedraidle_largura = pedraidle0.get_width()
 pedraidle_altura = pedraidle0.get_width()
-pedraidle0 = pygame.transform.scale(sapoidle0, (pedraidle_altura * escala,pedraidle_largura * escala))
+pedraidle0 = pygame.transform.scale(pedraidle0, (pedraidle_altura * escala,pedraidle_largura * escala))
 pedra_dic["idle"].append(pedraidle0)
 
 i = 1
 while i < 13:
     if i>=1 and i<10:
         pedraidle = pygame.image.load(f'assets//img//pedra//idle//tile00{i}.png')
-        pedraidle = pygame.transform.scale(sapohit, (pedraidle_altura * escala,pedraidle_altura * escala))
+        pedraidle = pygame.transform.flip(pedraidle, True, False)
+        pedraidle = pygame.transform.scale(pedraidle, (pedraidle_altura * escala,pedraidle_altura * escala))
         pedra_dic["idle"].append(pedraidle)
     else:
         pedraidle = pygame.image.load(f'assets//img//pedra//idle//tile0{i}.png')
-        pedraidle = pygame.transform.scale(sapohit, (pedraidle_altura * escala,pedraidle_altura * escala))
+        pedraidle = pygame.transform.flip(pedraidle, True, False)
+        pedraidle = pygame.transform.scale(pedraidle, (pedraidle_altura * escala,pedraidle_altura * escala))
         pedra_dic["idle"].append(pedraidle)
     i+=1
 
 #animacao hit pedra
 pedrahit0 = pygame.image.load("assets//img//pedra//hit//tile000.png")
+pedrahit0 = pygame.transform.flip(pedrahit0, True, False)
 pedrahit_largura = pedraidle0.get_width()
 pedrahit_altura = pedraidle0.get_width()
-pedrahit0 = pygame.transform.scale(sapoidle0, (pedraidle_altura * escala,pedraidle_largura * escala))
+pedrahit0 = pygame.transform.scale(pedraidle0, (pedraidle_altura * escala,pedraidle_largura * escala))
 pedra_dic["hit"].append(pedrahit0)
 
 i = 1
 while i < 4:
     pedrahit = pygame.image.load(f'assets//img//pedra//hit//tile00{i}.png')
-    pedrahit = pygame.transform.scale(sapohit, (pedrahit_altura * escala,pedrahit_altura * escala))
+    pedrahit = pygame.transform.flip(pedrahit, True, False)
+    pedrahit = pygame.transform.scale(pedrahit, (pedrahit_altura * escala,pedrahit_altura * escala))
     pedra_dic["hit"].append(pedrahit)
     i+=1
 
