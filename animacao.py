@@ -9,6 +9,7 @@ galinha_dic = {"idle": [],
 
 #para animacao da galinha parada
 gidle0 = pygame.image.load("assets//img//galinha//idle//tile000.png")
+gidle0 = pygame.transform.flip(gidle0, True, False)
 galinha_largura = gidle0.get_width() #estabelece largura da galinha
 galinha_altura = gidle0.get_height() #estabelece largura da galinha
 gidle0 = pygame.transform.scale(gidle0, (galinha_altura * escala ,galinha_largura * escala)) #redimenciona escala galinha
@@ -18,21 +19,25 @@ i = 1
 while i<13:
     if i>=1 and i<10:
         gidle = pygame.image.load(f'assets//img//galinha//idle//tile00{i}.png')
+        gidle = pygame.transform.flip(gidle, True, False)
         gidle = pygame.transform.scale(gidle , (galinha_altura * escala ,galinha_altura * escala))
     else:
         gidle = pygame.image.load(f'assets//img//galinha//idle//tile0{i}.png')
+        gidle = pygame.transform.flip(gidle, True, False)
         gidle = pygame.transform.scale(gidle , (galinha_altura * escala,galinha_altura * escala))
     galinha_dic["idle"].append(gidle)
     i+=1
 
 #Animação hit galinha
 ghit0 = pygame.image.load("assets//img//galinha//hit//tile000.png")
+ghit0 = pygame.transform.flip(ghit0, True, False)
 ghit0 = pygame.transform.scale(ghit0, (galinha_altura * escala ,galinha_largura * escala ))
 galinha_dic["hit"].append(ghit0)
 
 i = 1
 while i<5:
     ghit = pygame.image.load(f'assets//img//galinha//hit//tile00{i}.png')
+    ghit = pygame.transform.flip(ghit, True, False)
     ghit = pygame.transform.scale(ghit, (galinha_altura * escala,galinha_largura * escala))
     galinha_dic["hit"].append(ghit)
     i+=1

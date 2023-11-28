@@ -34,6 +34,11 @@ class Jogador(pygame.sprite.Sprite):
         self.defende = False
         self.luta_dic = luta_dic
         
+        if self.tipojogador == 1:
+            self.direcao = 'direita' #jogador fica na direita da tela
+        else:
+            self.direcao = 'esquerda'
+        
 
         # adiciona os jogadores como chaves do dicionario e o numero de golpes como valores
         if f'jogador{self.tipojogador}' not in Jogador.dicgolpes:
@@ -52,21 +57,48 @@ class Jogador(pygame.sprite.Sprite):
         # Usado para decicir se o jogador pode ou não pular
         self.state = PARADO
 
+    def virou(self, direcao): # diz pra onde esta indo
+        self.direcao = direcao
+        
     # Esse metodo atualiza a posição do personagem
     def update(self):
-    
-        if self.atc_index != 0: #animacao quando ocorre um ataque
-            if self.atc_index < len(self.luta_dic['hit']):
-                self.image = self.luta_dic['hit'][self.atc_index]
-                self.atc_index += 1
-            else:
-                self.atc_index = 0
-        else: # animacao quando esta parado
-            self.img_index += 1
-            if self.img_index >= len(self.luta_dic['idle']):
-                self.img_index = 0
+        if self.direcao == 'direita':
 
-            self.image = self.luta_dic['idle'][self.img_index]
+            #animacao quando ocorre um ataque
+            if self.atc_index != 0: 
+                if self.atc_index < len(self.luta_dic['hit']):
+                    self.image = self.luta_dic['hit'][self.atc_index]
+                    self.atc_index += 1
+                else:
+                    self.atc_index = 0
+
+            # animacao quando esta parado        
+            else: 
+                self.img_index += 1
+                if self.img_index >= len(self.luta_dic['idle']):
+                    self.img_index = 0
+
+                self.image = self.luta_dic['idle'][self.img_index]
+
+        if self.direcao == 'esquerda':
+
+            #animacao quando ocorre um ataque
+            if self.atc_index != 0: 
+                if self.atc_index < len(self.luta_dic['hit']):
+                    self.image = pygame.transform.flip(self.luta_dic['hit'][self.atc_index], True, False)
+                    self.atc_index += 1
+                else:
+                    self.atc_index = 0
+
+            # animacao quando esta parado        
+            else: 
+                self.img_index += 1
+                if self.img_index >= len(self.luta_dic['idle']):
+                    self.img_index = 0
+
+                self.image = pygame.transform.flip(self.luta_dic['idle'][self.img_index], True, False)
+
+        
 
         # Atualiza a movimentação no eixo x
         self.rect.x += self.speedx
@@ -84,9 +116,10 @@ class Jogador(pygame.sprite.Sprite):
             self.rect.bottom = ALTURA
             self.speedy = 0
             self.state = PARADO
-        if self.rect.top < 0:
-            self.rect.top = 0
-        
+
+    
+
+
     def pulo(self):
         if self.state == PARADO:
             self.speedy -= VEL_PULO

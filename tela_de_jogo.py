@@ -60,8 +60,10 @@ def tela_de_jogo(tela):
                     # Teclas jogador 1
                     if event.key == pygame.K_a:
                         jogador1.speedx -= 8
+                        jogador1.direcao = 'esquerda' #serve para dizer para que lado ele esta indo
                     if event.key == pygame.K_d:
                         jogador1.speedx += 8
+                        jogador1.direcao = 'direita' #serve para dizer para que lado ele esta indo
                     if event.key == pygame.K_w:
                         jogador1.pulo()
                     if event.key == pygame.K_s:
@@ -73,8 +75,10 @@ def tela_de_jogo(tela):
                     # Teclas jogador 2
                     if event.key == pygame.K_LEFT:
                         jogador2.speedx -=8
+                        jogador2.direcao = 'esquerda'
                     if event.key == pygame.K_RIGHT:
                         jogador2.speedx +=8
+                        jogador2.direcao = 'direita'
                     if event.key == pygame.K_UP:
                         jogador2.pulo()
                     if event.key == pygame.K_DOWN:

@@ -17,6 +17,7 @@ def load_assets():
         assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)
         
         assets['botao1'] = pygame.image.load('assets\\img\\botao.jpg')
-
+        
+        # ------Carrega sons do jogo
         pygame.mixer.music.load("assets//sons//barbie.wav")
         return assets
