@@ -23,6 +23,8 @@ INICIAR = 0
 JOGO = 1
 FIM = 2
 
+# Som efeitos --------------
+som = 0.3
 
 #Largura e altura da Tela Principal-----------------
 largura = 900
