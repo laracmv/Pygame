@@ -51,7 +51,7 @@ game_over_image = pygame.image.load(os.path.join("assets", "img", "game over2.jp
 game_over_image = pygame.transform.scale(game_over_image, (WIDTH, HEIGHT))
 
 # Criando o botão Jogar
-play_button = Button(WIDTH // 2 - 50, HEIGHT // 2 - 25, 100, 50, "Jogar", "play")
+play_button = Button(WIDTH // 2 - 50, HEIGHT // 2 - 25, 100, 50, "Jogar novamente", "play")
 
 
 # Variável para controlar o estado do jogo
@@ -102,7 +102,7 @@ while running:
         state = "end"
 
     elif state == "end":
-        end_screen.fill(WHITE)
+        #end_screen.fill(BLACK)
         end_screen.blit(game_over_image, (0, 0))
 
         for event in pygame.event.get():
