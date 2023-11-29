@@ -38,12 +38,12 @@ def tela_de_jogo(tela):
 
     MORTO = 0
     JOGANDO = 1
-    state = JOGANDO
+    estado = JOGANDO
 
     tecla_precionada = {}
 
     pygame.mixer.music.play(loops=-1)
-    while state != FINAL:
+    while estado != MORTO:
         clock.tick(FPS)
         tempo = pygame.time.get_ticks()
 
@@ -52,9 +52,10 @@ def tela_de_jogo(tela):
             #---consequências 
             # se jogo fechar state = morto, acaba o jogo
             if event.type == pygame.QUIT:
+                estado = MORTO
                 state = FIM
 
-            if state == JOGANDO:
+            if estado == JOGANDO:
                 if event.type == pygame.KEYDOWN:
                     tecla_precionada[event.key] = True
                     # Teclas jogador 1
@@ -120,6 +121,7 @@ def tela_de_jogo(tela):
                     else: 
                         # quando termina o evento de tempo acaba
                         pygame.time.set_timer(timer,0)
+                        estado = MORTO
                         state = FINAL
                         
                 
@@ -131,6 +133,7 @@ def tela_de_jogo(tela):
 
         # Se o jogador 1 ou 2 perder toda vida o jogo acaba
         if jogador1.saude <= 0 or jogador2.saude <=0: 
+            estado = MORTO
             state = FINAL
         
         # ----Saídas 

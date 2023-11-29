@@ -20,7 +20,6 @@ while state != FIM:
     if state == INICIAR:
         state = tela_inicial(tela)
     # Usa esse 1o if quanto tiver tela inicioq
-        state = telainicio(tela)
     # Usa esse 1o if quanto tiver tela inicio
     if state == JOGO:
         # vai para tela do jogo
