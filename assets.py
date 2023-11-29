@@ -23,7 +23,7 @@ def load_assets():
         #tela inicio
         assets['game over'] = pygame.image.load('assets\\img\\game over2.jpg')
 
-        assets['inicio'] = pygame.iamge.load('assets\\img\\ground.jpg')
+        assets['inicio'] = pygame.image.load('assets\\img\\ground.jpg')
 
         pygame.mixer.music.load("assets//sons//barbie.wav")
         pygame.mixer.music.set_volume(0.3) #nivel de som
