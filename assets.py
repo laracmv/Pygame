@@ -20,7 +20,7 @@ def load_assets():
         assets['fundo4'] = pygame.image.load('assets\\img\\fundo 4 jogo.png')
 
         #tela inicio
-        #assets[]
+        assets['game over'] = pygame.image.load('assets\\img\\game over2.jpg')
 
         pygame.mixer.music.load("assets//sons//barbie.wav")
         return assets
