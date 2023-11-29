@@ -17,7 +17,7 @@ def tela_de_jogo(tela):
     groups['all_sprites'] = all_sprites
 
     #--- Criar jogadores 
-    jogador1 = Jogador(pedra, assets, LARGURA / 4, ALTURA - 10, 1,2)
+    jogador1 = Jogador(sapo, assets, LARGURA / 4, ALTURA - 200, 1,2)
     jogador2 = Jogador(galinha, assets, LARGURA / 1.5, ALTURA - 10, 2,1)
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
@@ -43,7 +43,7 @@ def tela_de_jogo(tela):
     tecla_precionada = {}
 
     pygame.mixer.music.play(loops=-1)
-    while state != MORTO:
+    while state != FINAL:
         clock.tick(FPS)
         tempo = pygame.time.get_ticks()
 
@@ -52,7 +52,7 @@ def tela_de_jogo(tela):
             #---consequências 
             # se jogo fechar state = morto, acaba o jogo
             if event.type == pygame.QUIT:
-                state = MORTO
+                state = FIM
 
             if state == JOGANDO:
                 if event.type == pygame.KEYDOWN:
@@ -120,7 +120,8 @@ def tela_de_jogo(tela):
                     else: 
                         # quando termina o evento de tempo acaba
                         pygame.time.set_timer(timer,0)
-                        state = MORTO
+                        state = FINAL
+                        
                 
         # Atualiza estado do jogo
         all_sprites.update()
@@ -130,10 +131,14 @@ def tela_de_jogo(tela):
 
         # Se o jogador 1 ou 2 perder toda vida o jogo acaba
         if jogador1.saude <= 0 or jogador2.saude <=0: 
-            state = MORTO
+            state = FINAL
         
         # ----Saídas 
         tela.fill((72,61,139))
+        tela.blit(assets['fundo3'], (0,0))
+        tela.blit(assets['chao'],(0,700))
+        tela.blit(assets['chao'],(600,700))
+        
         all_sprites.draw(tela)
 
         # ela.blit(pegaimagem(assets['galinha_idle'],32,34,3), (0,0))t
@@ -147,5 +152,7 @@ def tela_de_jogo(tela):
         tela.blit(timertexto, (650, 50))
     
         pygame.display.update()
+
+    return state
 
 

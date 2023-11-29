@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, BMANA_LARGURA, BMANA_ALTURA, som, BSAUDE_ALTURA, BSAUDE_LARGURA
+from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, BMANA_LARGURA, BMANA_ALTURA, som, BSAUDE_ALTURA, BSAUDE_LARGURA, LARGURA, ALTURA
 import os
 
 BOTAO1 = 'botao1'
@@ -15,15 +15,16 @@ def load_assets():
         assets['botao1'] = pygame.image.load('assets\\img\\botao.jpg')
 
         #fundos
-        assets['fundo1'] = pygame.image.load('assets\\img\\fundo 1 jogo.jpg')
-        assets['fundo2'] = pygame.image.load('assets\\img\\fundo 2 jogo.jpg')
-        assets['fundo3'] = pygame.image.load('assets\\img\\fundo 3 jogo.jpg')
-        assets['fundo4'] = pygame.image.load('assets\\img\\fundo 4 jogo.png')
-
+        assets['fundo1'] = pygame.image.load('assets\\img\\fundo 1 jogo.jpg').convert()
+        assets['fundo2'] = pygame.image.load('assets\\img\\fundo 2 jogo.jpg').convert()
+        assets['fundo3'] = pygame.image.load('assets\\img\\fundo 3 jogo.jpg').convert()
+        assets['fundo3'] = pygame.transform.scale(assets['fundo3'], (LARGURA, ALTURA))
+        assets['fundo4'] = pygame.image.load('assets\\img\\fundo 4 jogo.png').convert()
+        
         #tela inicio
         assets['game over'] = pygame.image.load('assets\\img\\game over2.jpg')
 
-        assets['inicio'] = pygame.iamge.load('assets\\img\\ground.jpg')
+        assets['chao'] = pygame.image.load('assets\\img\\ground.jpg')
 
         pygame.mixer.music.load("assets//sons//barbie.wav")
         pygame.mixer.music.set_volume(0.3) #nivel de som

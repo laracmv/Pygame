@@ -74,11 +74,11 @@ def tela_inicial(tela):
                 state = DONE
                 running = False
 
-            elif running:
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if botao1.rect.collidepoint(event.pos):
-                        state = JOGO
-                        running = False
+            # elif running:
+            #     if event.type == pygame.MOUSEBUTTONDOWN:
+            #         if botao1.rect.collidepoint(event.pos):
+            #             state = JOGO
+            #             running = False
                         
 
 

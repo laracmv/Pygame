@@ -23,7 +23,8 @@ AZUL = (60,155,211)
 # Estados do jogo-------------------------
 INICIAR = 0
 JOGO = 1
-FIM = 2
+FINAL = 2
+FIM = 3
 
 # Som efeitos --------------
 som = 0.3

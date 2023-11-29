@@ -1,7 +1,8 @@
 import pygame
 from dados_jogo import *
 from tela_de_jogo import tela_de_jogo
-from telainicio import *
+from inicial import tela_inicial
+from fimjogo import tela_final
 
 pygame.init()
 pygame.mixer.init()
@@ -16,11 +17,13 @@ state = INICIAR
 # mudar para state = iniciar quando tiver criado tela de inicio
 while state != FIM:
     if state == INICIAR:
-        state = telainicio(tela)
-    # Usa esse 1o if quanto tiver tela inicio
+        state = tela_inicial(tela)
+    # Usa esse 1o if quanto tiver tela inicioq
     if state == JOGO:
         # vai para tela do jogo
         state = tela_de_jogo(tela)
+    if state == FINAL: 
+        state = tela_final(tela)  
     else:  
         state = FIM
     

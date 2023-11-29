@@ -108,8 +108,8 @@ class Jogador(pygame.sprite.Sprite):
             self.rect.right = LARGURA
         if self.rect.left < 0:
             self.rect.left = 0
-        if self.rect.bottom > ALTURA:
-            self.rect.bottom = ALTURA
+        if self.rect.bottom > ALTURA - 75:
+            self.rect.bottom = ALTURA - 75
             self.speedy = 0
             self.state = PARADO
 
