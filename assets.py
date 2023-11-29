@@ -1,5 +1,5 @@
 import pygame
-from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, BMANA_LARGURA, BMANA_ALTURA, som
+from dados_jogo import JOGADOR1_ALTURA, JOGADOR1_LARGURA, JOGADOR2_ALTURA, JOGADOR2_LARGURA, BMANA_LARGURA, BMANA_ALTURA, som, BSAUDE_ALTURA, BSAUDE_LARGURA
 import os
 
 BOTAO1 = 'botao1'
@@ -7,6 +7,7 @@ BOTAO1 = 'botao1'
 def load_assets():
         assets = {}
         assets["barra_saude"] = pygame.image.load("assets//img//Barradevida.png").convert_alpha() # convert_alpha() - uso com imagem de fundo transparente
+        assets['barra_saude'] = pygame.transform.scale(assets['barra_saude'], (BSAUDE_LARGURA, BSAUDE_ALTURA))
         assets['barra_mana'] = pygame.image.load("assets//img//Barradevida.png").convert_alpha()
         assets['barra_mana'] = pygame.transform.scale(assets['barra_mana'], (BMANA_LARGURA, BMANA_ALTURA))
         assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)

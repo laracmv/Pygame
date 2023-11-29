@@ -207,7 +207,7 @@ class BarraMana(pygame.sprite.Sprite):
 
         if ticks_transcorridosbarra > self.ticks_mana:
             # if para quando ocorre combos, acessa o dicionario de golpes e ve que bateu sem parar
-            if Jogador.dicgolpes[f'jogador{self.tipojogador}'] > 2:
+            if Jogador.dicgolpes[f'jogador{self.tipojogador}'] > 3:
                 print("funcionou")
                 self.taxamana = 2
                 self.ultimo_mana = nowbarra

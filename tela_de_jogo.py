@@ -21,9 +21,9 @@ def tela_de_jogo(tela):
     jogador2 = Jogador(galinha, assets, LARGURA / 1.5, ALTURA - 10, 2,1)
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
-    barradevidaj2 = Barradevida(assets, 1200, 10) 
+    barradevidaj2 = Barradevida(assets, 980, 10) 
     barramanaj1 = BarraMana(assets, 30, 140, 1,2)
-    barramanaj2 = BarraMana(assets, 1200, 140, 2,1)
+    barramanaj2 = BarraMana(assets, 980, 140, 2,1)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -144,7 +144,7 @@ def tela_de_jogo(tela):
         barramanaj1.drawbarra(tela)
         barramanaj2.drawbarra(tela)
         # atualiza o temporizador
-        tela.blit(timertexto, (820, 50))
+        tela.blit(timertexto, (650, 50))
     
         pygame.display.update()
 
