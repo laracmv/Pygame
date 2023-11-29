@@ -59,8 +59,8 @@ clock = pygame.time.Clock()
 
 
 # argumentos para o botão: O que escreve nele, largura e altura dele, e onde fica.
-botao1 = Botao('Jogar', 200, 40, botao_top)
-botao2 = Botao('Instruções',200, 40, botao_baixo)
+botao1 = Botao('Jogar novamente', 200, 40, botao_top)
+botao2 = Botao('Sair',200, 40, botao_baixo)
 
 while True:
     for evento in pygame.event.get():

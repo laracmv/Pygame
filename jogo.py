@@ -25,3 +25,4 @@ while state != FIM:
     tela.fill((PRETO))
 
 pygame.quit()
+
