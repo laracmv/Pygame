@@ -7,24 +7,19 @@ from fimjogo import tela_final
 pygame.init()
 pygame.mixer.init()
 
-
 # Gerar tela principal
 tela = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rinha de Bicho')
 
-
 state = INICIAR
-# mudar para state = iniciar quando tiver criado tela de inicio
 while state != FIM:
-    #if state == INICIO:
-    if state == INICIAR:
+    
+    if state == INICIAR: #leva até a tela de inicio
         state = tela_inicial(tela)
-    # Usa esse 1o if quanto tiver tela inicioq
-    # Usa esse 1o if quanto tiver tela inicio
-    if state == JOGO:
-        # vai para tela do jogo
+    if state == JOGO: # vai para tela do jogo
+        
         state = tela_de_jogo(tela)
-    if state == FINAL: 
+    if state == FINAL: #leva até a tela final
         state = tela_final(tela)  
     else:  
         state = FIM

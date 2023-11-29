@@ -1,15 +1,23 @@
 import pygame 
 from dados_jogo import *
 from assets import *
+from tela_de_jogo import *
+from assets import *
 
 def tela_final(tela):
     clock = pygame.time.Clock()
+
+    #para dizer quem ganhou
+    if Jogador.j1ganhou == True:
+        ganhador = 'Sapo'
+    else:
+        ganhador = 'Galinha'
 
     #trecho extraido de chat.openai.com
     fonte = pygame.font.Font(None, 60)  # Você também pode fornecer o nome de uma fonte e o tamanho
 
     # Renderize o texto desejado
-    texto = fonte.render("Tecle cima para jogar e baixo para fechar", True, white)
+    texto = fonte.render(f" {ganhador} Ganhou! Tecle cima para jogar e baixo para fechar", True, white)
 
     # Posicione o texto no centro da tela
     pos_texto = texto.get_rect(center=(LARGURA// 2, ALTURA // 2))

@@ -1,11 +1,14 @@
 import pygame
 from dados_jogo import *
 from assets import load_assets
-from sprits import Jogador, Barradevida, BarraMana
+from sprits import Jogador, Barradevida
 from animacao import * 
 
+vencedor = None
+
 def tela_de_jogo(tela):
-    
+    global vencedor
+
     # funcao do jogo pra ajuste da velocidade
     clock = pygame.time.Clock()
 
@@ -135,6 +138,13 @@ def tela_de_jogo(tela):
         if jogador1.saude <= 0 or jogador2.saude <=0: 
             estado = MORTO
             state = FINAL
+
+            #para saber quem ganhou
+            if jogador1.saude <=0:
+                Jogador.j2ganhou = True
+            else:
+                Jogador.j1ganhou = True
+
         
         # ----Saídas 
         tela.fill((72,61,139))
@@ -143,9 +153,7 @@ def tela_de_jogo(tela):
         tela.blit(assets['chao'],(600,700))
         
         all_sprites.draw(tela)
-
-        # ela.blit(pegaimagem(assets['galinha_idle'],32,34,3), (0,0))t
-        
+ 
         # Atualiza barra de vida
         barradevidaj1.desenhar_barra(tela, jogador1.saude)
         barradevidaj2.desenhar_barra(tela,jogador2.saude)

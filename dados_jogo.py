@@ -19,6 +19,7 @@ BSAUDE_ALTURA= 80
 PRETO = (0, 0, 0)
 CORAL = (235,116,76)
 AZUL = (60,155,211)
+cinza = (128,128,128)
 
 # Estados do jogo-------------------------
 INICIAR = 0
@@ -29,23 +30,8 @@ FIM = 3
 # Som efeitos --------------
 som = 0.3
 
-#Largura e altura da Tela Principal-----------------
-largura = 900
-altura = 650
-
-#INICIO -------------------------------------------------------------------
-cor_inicio = (128,0,0)
-
 # TELA INICIO
 pos = (0,0) #rever isso
-
-#tamanho da tela inicio
-tela_inicio = (1500,780)
-
-#cor de fundo da tela inicio
-fundo_inicio = (128,0,0)
-
-#BOTÃO 1 ----------------
 
 #cor de fundo da imagem do botão
 white = (220,220,220)
@@ -70,9 +56,4 @@ altura = 50
 larguraBotao = 300
 alturaBotao = 200
 
-#fundos
-larguraFundo = 300
-alturaFundo = 200
 
-#mudar cor na hora que passa o mouse no botão
-cinza = (128,128,128)

@@ -33,6 +33,8 @@ class Jogador(pygame.sprite.Sprite):
         self.saude = 100
         self.defende = False
         self.luta_dic = luta_dic
+        self.j2ganhou = False
+        self.j1ganhou = False
 
         #define direcao inicial do jogador
         if self.tipojogador == 1:
@@ -44,8 +46,6 @@ class Jogador(pygame.sprite.Sprite):
         if f'jogador{self.tipojogador}' not in Jogador.dicgolpes:
             Jogador.dicgolpes[f'jogador{self.tipojogador}'] = 0
 
-        print(Jogador.dicgolpes)
-
         # pode ou não bater
         self.ultima_porrada = pygame.time.get_ticks()
         # ultima defesa
@@ -56,8 +56,7 @@ class Jogador(pygame.sprite.Sprite):
 
         # Usado para decicir se o jogador pode ou não pular
         self.state = PARADO
-
-    # Esse metodo atualiza a posição do personagem
+    
     def update(self):
 
         #serve para deixar a imagem correta caso o jogador ande para direita
@@ -123,11 +122,10 @@ class Jogador(pygame.sprite.Sprite):
         self.jogador = jogador
         self.oponente = oponente
 
-        # serve para atrasar a porrada 
         now = pygame.time.get_ticks()
         ticks_transcorridos = now - self.ultima_porrada
 
-        if ticks_transcorridos > self.bater_ticks:
+        if ticks_transcorridos > self.bater_ticks: #serve para não ser possivel bater sem parar, so depois um tempo
             self.ultima_porrada = now
             if (pygame.sprite.collide_mask(jogador, oponente)):
                 oponente.saude -=10
@@ -138,8 +136,6 @@ class Jogador(pygame.sprite.Sprite):
                 #toca o som de jogador batendo
                 if self.luta_dic == galinha:
                     self.assets['galinha_hit'].play()
-                if self.luta_dic == pedra:
-                    self.assets['pedra_hit'].play()
                 if self.luta_dic == sapo:
                     self.assets['sapo_hit'].play()
 
@@ -150,9 +146,7 @@ class Jogador(pygame.sprite.Sprite):
         if ticks_transcorridos > self.defesa_ticks:
             self.ultima_defesa = nowdefesa
             self.defende = True
-            print("Defendeu")
     
-
 class Barradevida(pygame.sprite.Sprite):
     def __init__(self, assets, x, y):
         # Construtor da classe mãe
@@ -174,48 +168,5 @@ class Barradevida(pygame.sprite.Sprite):
         # recebe a superfície a ser desenhada, a cor da vida, a posição dele(x,y, largura, altura) e a curvatura da barrra
         pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 11 , 475 * taxa, 60),border_radius=20)
 
-class BarraMana(pygame.sprite.Sprite):
-    def __init__(self, assets, x, y, tipojogador, tipooponente):
-        # Construtor da classe mãe
-        pygame.sprite.Sprite.__init__(self)
 
-        self.tipojogador = tipojogador
-        self.tipooponente = tipooponente
-        self.image = assets['barra_mana']
-        self.assets = assets
-        self.mask = pygame.mask.from_surface(self.image)
-        self.rect = self.image.get_rect()
-        self.centerx = x
-        self.centery = y
-
-        # mana - mana inicial
-        self.mana = 0
-        # taxamana - quantos pixels vai aumentar 
-        self.taxamana = 1
-        self.ultimo_mana = pygame.time.get_ticks()
-        # ticks_mana - quantos milisegundos vai ter entre cada incremento
-        self.ticks_mana = 100
-
-    def drawbarra(self, superficie):
-        larguramana = (475 * (self.mana / 100))
-        superficie.blit(self.image, (self.centerx, self.centery))
-        pygame.draw.rect(superficie, AZUL, (self.centerx + 13, self.centery + 10, larguramana, 30),border_radius = 8)
-
-    def update(self):
-        nowbarra = pygame.time.get_ticks()
-        ticks_transcorridosbarra = nowbarra - self.ultimo_mana
-
-        if ticks_transcorridosbarra > self.ticks_mana:
-            # if para quando ocorre combos, acessa o dicionario de golpes e ve que bateu sem parar
-            if Jogador.dicgolpes[f'jogador{self.tipojogador}'] > 3:
-                print("funcionou")
-                self.taxamana = 2
-                self.ultimo_mana = nowbarra
-                self.mana = min(self.mana + self.taxamana, 100)
-            else:
-                # if de uma barra de mana normal
-                self.taxa = 1
-                self.ultimo_mana = nowbarra
-                # soma o valor da mana com a taxa, o limitando a 100 (largura maxima)
-                self.mana = min(self.mana + self.taxamana, 100)
         
