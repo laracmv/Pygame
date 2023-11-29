@@ -172,7 +172,7 @@ class Barradevida(pygame.sprite.Sprite):
         # desenha o contorno da barra de vida
         superficie.blit(self.image, self.rect)
         # recebe a superfície a ser desenhada, a cor da vida, a posição dele(x,y, largura, altura) e a curvatura da barrra
-        pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 19 , 620 * taxa, 80),border_radius=20)
+        pygame.draw.rect(superficie, CORAL, (self.rect.x + 14, self.rect.y + 11 , 475 * taxa, 60),border_radius=20)
 
 class BarraMana(pygame.sprite.Sprite):
     def __init__(self, assets, x, y, tipojogador, tipooponente):
@@ -197,7 +197,7 @@ class BarraMana(pygame.sprite.Sprite):
         self.ticks_mana = 100
 
     def drawbarra(self, superficie):
-        larguramana = (620 * (self.mana / 100))
+        larguramana = (475 * (self.mana / 100))
         superficie.blit(self.image, (self.centerx, self.centery))
         pygame.draw.rect(superficie, AZUL, (self.centerx + 13, self.centery + 10, larguramana, 30),border_radius = 8)
 

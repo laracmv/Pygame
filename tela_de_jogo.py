@@ -22,8 +22,8 @@ def tela_de_jogo(tela):
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 980, 10) 
-    barramanaj1 = BarraMana(assets, 30, 140, 1,2)
-    barramanaj2 = BarraMana(assets, 980, 140, 2,1)
+    barramanaj1 = BarraMana(assets, 30, 100, 1,2)
+    barramanaj2 = BarraMana(assets, 980, 100, 2,1)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
