@@ -6,6 +6,7 @@ class Botao:
     def __init__(self, texto, largura, altura, posicao):
         #atributos principais
         self.pressed = False
+        self.hovered = False
 
         #retangulo de cima (top)
         self.retangulo_cima = pygame.Rect(posicao, (largura, altura))
@@ -25,7 +26,7 @@ class Botao:
     def draw(self):
         pygame.draw.rect(tela, self.cor_cima, self.retangulo_cima, border_radius=12)
 
-        if self.pressed:
+        if self.pressed or self.hovered:
             pygame.draw.rect(tela, self.cor_baixo, self.retangulo_baixo, border_radius=12)
         else:
             pygame.draw.rect(tela, cor_inicio, self.retangulo_baixo, border_radius=12)
@@ -45,17 +46,23 @@ class Botao:
                     print('click')
                     self.pressed = False
         else:
+            self.hovered = False
             self.cor_cima = cor_inicio
 
 #Inicializa o Pygame após as definições de cores
 pygame.init()
-tela = pygame.display.set_mode(tela_inicio)
+telaa = (1500,780)
+tela = pygame.display.set_mode(telaa)
 pygame.display.set_caption('Início')
 clock = pygame.time.Clock()
 
 # Carrega a imagem de fundo
 fundo = pygame.image.load('assets\\img\\tela inicio.jpg')
-fundo = pygame.transform.scale(fundo, tela_inicio)
+fundo = pygame.transform.scale(fundo, telaa)
+
+#botoes
+posicao_botao1 = ((telaa[0] - 200) // 2, (telaa[1] - 40) // 2 - 40)
+posicao_botao2 = ((telaa[0] - 200) // 2, (telaa[1] - 40) // 2 + 40)
 
 # argumentos para o botão: O que escreve nele, largura e altura dele, e onde fica.
 botao1 = Botao('Jogar', 200, 40, botao_top)
