@@ -6,61 +6,67 @@ class Botao:
     def __init__(self, texto, largura, altura, posicao):
         #atributos principais
         self.pressed = False
+        self.hovered = False
 
-        # retangulo de cima (top)
+        #retangulo de cima (top)
         self.retangulo_cima = pygame.Rect(posicao, (largura, altura))
         self.cor_cima = cor_inicio
 
         #retangulo de baixo
-        self.retangulo_baixo = pygame.Rect(posicao, (100,50))
+        self.retangulo_baixo = pygame.Rect(posicao, (largura, altura))
         self.cor_baixo = cor_inicio
 
-        # fonte do texto
+        #fonte do texto
         self.fonte = pygame.font.Font(None, 30)
 
-        # Texto
+        #Texto
         self.surface_texto = self.fonte.render(texto, True, cor_texto_botao)
         self.retangulo_texto = self.surface_texto.get_rect(center=self.retangulo_cima.center)
 
-        self.surfaceb_texto = self.fonte.render(texto, True, cor_texto_botao)
-        self.retangulob_texto = self.surfaceb_texto.get_rect(top=self.retangulo_baixo.top)
-
-
     def draw(self):
-        pygame.draw.rect(tela, self.cor_cima, self.retangulo_cima,border_radius = 12) #esse border raius define o raio da borda do retangulo
+        pygame.draw.rect(tela, self.cor_cima, self.retangulo_cima, border_radius=12)
 
-        #pygame.draw.rect(tela,self.cor_baixo,self.retangulo_baixo, border_radius=12)
+        if self.pressed or self.hovered:
+            pygame.draw.rect(tela, self.cor_baixo, self.retangulo_baixo, border_radius=12)
+        else:
+            pygame.draw.rect(tela, cor_inicio, self.retangulo_baixo, border_radius=12)
 
         tela.blit(self.surface_texto, self.retangulo_texto)
-        tela.blit(self.surfaceb_texto, self.retangulo_texto)
         self.clicar()
-    
 
     def clicar(self):
-        mouse_pos = pygame.mouse.get_pos() #saber a posição do mouse quando for clicar no botão
-        if self.retangulo_cima.collidepoint(mouse_pos): #se nosso mouse ta no nosso botão
+        mouse_pos = pygame.mouse.get_pos()
+        if self.retangulo_cima.collidepoint(mouse_pos):
             self.cor_cima = cinza
 
-            if pygame.mouse.get_pressed()[0]: #se o jogador está pressionando o botao
-                self.pressed = True #se ele estiver pressionando, então é verdade
+            if pygame.mouse.get_pressed()[0]:
+                self.pressed = True
             else:
-                if self.pressed == True:
+                if self.pressed:
                     print('click')
-                    self.pressed = False #so mostra o click se foi clicado, se não não
+                    self.pressed = False
         else:
+            self.hovered = False
             self.cor_cima = cor_inicio
 
-
-# Inicializa o Pygame após as definições de cores
+#Inicializa o Pygame após as definições de cores
 pygame.init()
-tela = pygame.display.set_mode(tela_inicio)
+telaa = (1500,780)
+tela = pygame.display.set_mode(telaa)
 pygame.display.set_caption('Início')
 clock = pygame.time.Clock()
 
+# Carrega a imagem de fundo
+fundo = pygame.image.load('assets\\img\\tela inicio.jpg')
+fundo = pygame.transform.scale(fundo, telaa)
+
+#botoes
+posicao_botao1 = ((telaa[0] - 200) // 2, (telaa[1] - 40) // 2 - 40)
+posicao_botao2 = ((telaa[0] - 200) // 2, (telaa[1] - 40) // 2 + 40)
 
 # argumentos para o botão: O que escreve nele, largura e altura dele, e onde fica.
 botao1 = Botao('Jogar', 200, 40, botao_top)
-botao2 = Botao('Instruções',200, 40, botao_baixo)
+botao2 = Botao('Instruções', 200, 40, botao_baixo)
 
 while True:
     for evento in pygame.event.get():
@@ -68,10 +74,10 @@ while True:
             pygame.quit()
             sys.exit()
 
-    tela.fill(fundo_inicio)
+    tela.blit(fundo, (0, 0))  #Desenha a imagem de fundo
+
     botao1.draw()
     botao2.draw()
 
-    # Corrige o erro de digitação na linha a seguir (update em vez de uptade)
     pygame.display.update()
     clock.tick(60)

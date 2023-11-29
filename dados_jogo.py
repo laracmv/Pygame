@@ -39,7 +39,7 @@ cor_inicio = (128,0,0)
 pos = (0,0) #rever isso
 
 #tamanho da tela inicio
-tela_inicio = (1050,750)
+tela_inicio = (1500,780)
 
 #cor de fundo da tela inicio
 fundo_inicio = (128,0,0)
@@ -61,9 +61,17 @@ botaoB = (700,480)
 black = (0,0,0)
 cor_texto_botao = black
 
-#largura e altura do botão
+#largura e altura do botão inicio
 largura = 100
 altura = 50
+
+#largura botão de FUNDOS
+larguraBotao = 300
+alturaBotao = 200
+
+#fundos
+larguraFundo = 300
+alturaFundo = 200
 
 #mudar cor na hora que passa o mouse no botão
 cinza = (128,128,128)
