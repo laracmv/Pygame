@@ -16,9 +16,12 @@ pygame.display.set_caption('Jogo de Luta')
 state = INICIAR
 # mudar para state = iniciar quando tiver criado tela de inicio
 while state != FIM:
+    #if state == INICIO:
     if state == INICIAR:
         state = tela_inicial(tela)
     # Usa esse 1o if quanto tiver tela inicioq
+        state = telainicio(tela)
+    # Usa esse 1o if quanto tiver tela inicio
     if state == JOGO:
         # vai para tela do jogo
         state = tela_de_jogo(tela)
@@ -30,4 +33,3 @@ while state != FIM:
     tela.fill((PRETO))
 
 pygame.quit()
-
