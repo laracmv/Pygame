@@ -13,7 +13,7 @@ class Jogador(pygame.sprite.Sprite):
     # dicionario para a classe inteira, usado para criar um unico dicionario com numero de golpes consecutivos 
     dicgolpes = {}
 
-    def __init__(self,luta_dic, x, y, tipojogador, tipooponente):
+    def __init__(self,luta_dic, assets, x, y, tipojogador, tipooponente):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
@@ -29,12 +29,17 @@ class Jogador(pygame.sprite.Sprite):
         self.rect.bottom = y
         self.speedx = 0
         self.speedy = 0
-        # self.assets = assets
+        self.assets = assets
         self.saude = 100
         self.defende = False
         self.luta_dic = luta_dic
-        
 
+        #define direcao inicial do jogador
+        if self.tipojogador == 1:
+            self.direcao = 'direita' 
+        else:
+            self.direcao = 'esquerda'
+        
         # adiciona os jogadores como chaves do dicionario e o numero de golpes como valores
         if f'jogador{self.tipojogador}' not in Jogador.dicgolpes:
             Jogador.dicgolpes[f'jogador{self.tipojogador}'] = 0
@@ -54,19 +59,42 @@ class Jogador(pygame.sprite.Sprite):
 
     # Esse metodo atualiza a posição do personagem
     def update(self):
-    
-        if self.atc_index != 0: #animacao quando ocorre um ataque
-            if self.atc_index < len(self.luta_dic['hit']):
-                self.image = self.luta_dic['hit'][self.atc_index]
-                self.atc_index += 1
-            else:
-                self.atc_index = 0
-        else: # animacao quando esta parado
-            self.img_index += 1
-            if self.img_index >= len(self.luta_dic['idle']):
-                self.img_index = 0
 
-            self.image = self.luta_dic['idle'][self.img_index]
+        #serve para deixar a imagem correta caso o jogador ande para direita
+        if self.direcao == 'direita':
+
+            #animacao quando ocorre um ataque
+            if self.atc_index != 0: 
+                if self.atc_index < len(self.luta_dic['hit']):
+                    self.image = self.luta_dic['hit'][self.atc_index]
+                    self.atc_index += 1
+                else:
+                    self.atc_index = 0
+
+            # animacao quando esta parado        
+            else: 
+                self.img_index += 1
+                if self.img_index >= len(self.luta_dic['idle']):
+                    self.img_index = 0
+                self.image = self.luta_dic['idle'][self.img_index]
+
+        #inverte imagem quando ele anda para esquerda
+        if self.direcao == 'esquerda':
+
+            #animacao quando ocorre um ataque
+            if self.atc_index != 0: 
+                if self.atc_index < len(self.luta_dic['hit']):
+                    self.image = pygame.transform.flip(self.luta_dic['hit'][self.atc_index], True, False)
+                    self.atc_index += 1
+                else:
+                    self.atc_index = 0
+
+            # animacao quando esta parado        
+            else: 
+                self.img_index += 1
+                if self.img_index >= len(self.luta_dic['idle']):
+                    self.img_index = 0
+                self.image = pygame.transform.flip(self.luta_dic['idle'][self.img_index], True, False)
 
         # Atualiza a movimentação no eixo x
         self.rect.x += self.speedx
@@ -84,9 +112,7 @@ class Jogador(pygame.sprite.Sprite):
             self.rect.bottom = ALTURA
             self.speedy = 0
             self.state = PARADO
-        if self.rect.top < 0:
-            self.rect.top = 0
-        
+
     def pulo(self):
         if self.state == PARADO:
             self.speedy -= VEL_PULO
@@ -96,7 +122,6 @@ class Jogador(pygame.sprite.Sprite):
     def bateu(self, jogador, oponente):
         self.jogador = jogador
         self.oponente = oponente
-
 
         # serve para atrasar a porrada 
         now = pygame.time.get_ticks()
@@ -110,7 +135,13 @@ class Jogador(pygame.sprite.Sprite):
                 self.dicgolpes[f'jogador{self.tipojogador}'] +=1
                 self.dicgolpes[f'jogador{self.tipooponente}'] = 0
                 self.atc_index = 1
-            print(self.dicgolpes)
+                #toca o som de jogador batendo
+                if self.luta_dic == galinha:
+                    self.assets['galinha_hit'].play()
+                if self.luta_dic == pedra:
+                    self.assets['pedra_hit'].play()
+                if self.luta_dic == sapo:
+                    self.assets['sapo_hit'].play()
 
     def defesa(self):
         nowdefesa = pygame.time.get_ticks() 
