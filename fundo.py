@@ -51,16 +51,16 @@ pygame.display.set_caption('Fundos')
 clock = pygame.time.Clock()
 
 # argumentos para o botão: O que escreve nele, largura e altura dele, e onde fica.
-posicao_botao1 = (50, tela_inicio[1] // 2 - 250 // 2)
-posicao_botao2 = (50, tela_inicio[1] // 2 + 20)
-posicao_botao3 = (tela_inicio[0] - 670, tela_inicio[1] // 2 - 200 // 2)
-posicao_botao4 = (tela_inicio[0] - 670, tela_inicio[1] // 2 + 20)
+posicaoBotao1 = (150,70)
+posicaoBotao2 = (150,400)
+posicaoBotao3 = (800,70)
+posicaoBotao4 = (800,400)
 
 # Instâncias de botão
-botao1 = Botao('Botão 1', 'assets\\img\\fundo 1 jogo.jpg', 590, 280, posicao_botao1)
-botao2 = Botao('Botão 2', 'assets\\img\\fundo 2 jogo.jpg', 590, 280, posicao_botao2)
-botao3 = Botao('Botão 3', 'assets\\img\\fundo 3 jogo.jpg', 590, 280, posicao_botao3)
-botao4 = Botao('Botão 4', 'assets\\img\\fundo 4 jogo.png', 590, 280, posicao_botao4)
+botao1 = Botao('Botão 1', 'assets\\img\\fundo 1 jogo.jpg', 590, 280, posicaoBotao1)
+botao2 = Botao('Botão 2', 'assets\\img\\fundo 2 jogo.jpg', 590, 280, posicaoBotao2)
+botao3 = Botao('Botão 3', 'assets\\img\\fundo 3 jogo.jpg', 590, 280, posicaoBotao3)
+botao4 = Botao('Botão 4', 'assets\\img\\fundo 4 jogo.png', 590, 280, posicaoBotao4)
 
 while True:
     for evento in pygame.event.get():
