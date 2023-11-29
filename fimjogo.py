@@ -9,7 +9,7 @@ def tela_final(tela):
     fonte = pygame.font.Font(None, 60)  # Você também pode fornecer o nome de uma fonte e o tamanho
 
     # Renderize o texto desejado
-    texto = fonte.render("PERDEU! Tecle cima para sim e baixo para nao", True, white)
+    texto = fonte.render("Tecle cima para jogar e baixo para fechar", True, white)
 
     # Posicione o texto no centro da tela
     pos_texto = texto.get_rect(center=(LARGURA// 2, ALTURA // 2))
