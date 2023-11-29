@@ -24,4 +24,11 @@ def load_assets():
         #assets[]
 
         pygame.mixer.music.load("assets//sons//barbie.wav")
+        pygame.mixer.music.set_volume(0.3) #nivel de som
+        assets['galinha_hit'] = pygame.mixer.Sound("assets//sons//galinhahit.wav")
+        assets['galinha_hit'].set_volume(som)
+        assets['pedra_hit'] = pygame.mixer.Sound("assets//sons//pedrahit.wav")
+        assets['sapo_hit'] = pygame.mixer.Sound("assets//sons//sapohit.wav")
+        assets['sapo_hit'].set_volume(som)
+        
         return assets
