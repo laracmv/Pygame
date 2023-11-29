@@ -1,12 +1,13 @@
 import pygame
 import sys
-import os
-import assets
+from assets import *
+from jogo import *
 from jogo import *
 
 # Inicialização do Pygame
 pygame.init()
 
+INICIO = 2
 # Definindo algumas constantes
 WIDTH, HEIGHT = 1500, 780
 FPS = 60
@@ -48,11 +49,11 @@ pygame.display.set_caption('Jogo de Luta')
 state = JOGO
 # mudar para state = iniciar quando tiver criado tela de inicio
 while state != FIM:
-    # if state == INICIO:
+    if state == INICIO:
     # Usa esse 1o if quanto tiver tela inicio
-    if state == JOGO:
+        if state == JOGO:
         # vai para tela do jogo
-        state = tela_de_jogo(tela)
+            state = tela_de_jogo(tela)
     else:  
         state = FIM
     

@@ -57,16 +57,16 @@ pygame.display.set_caption('Início')
 clock = pygame.time.Clock()
 
 # Carrega a imagem de fundo
-fundo = pygame.image.load('assets\\img\\tela inicio.jpg')
+fundo = pygame.image.load('assets\\img\\iniciooo.jpg')
 fundo = pygame.transform.scale(fundo, telaa)
 
 #botoes
-posicao_botao1 = ((telaa[0] - 200) // 2, (telaa[1] - 40) // 2 - 40)
-posicao_botao2 = ((telaa[0] - 200) // 2, (telaa[1] - 40) // 2 + 40)
+posicao_botao1 = (630,330)
+posicao_botao2 = (630,390)
 
 # argumentos para o botão: O que escreve nele, largura e altura dele, e onde fica.
-botao1 = Botao('Jogar', 200, 40, botao_top)
-botao2 = Botao('Instruções', 200, 40, botao_baixo)
+botao1 = Botao('Jogar', 200, 40, posicao_botao1)
+botao2 = Botao('Instruções', 200, 40, posicao_botao2)
 
 while True:
     for evento in pygame.event.get():
