@@ -12,7 +12,6 @@ def load_assets():
         assets["tempo_fonte"] = pygame.font.Font("assets//fontes//PressStart2P.ttf", 42)
         
         assets['botao1'] = pygame.image.load('assets\\img\\botao.jpg')
-<<<<<<< HEAD
 
         #fundos
         assets['fundo1'] = pygame.image.load('assets\\img\\fundo 1 jogo.jpg')
@@ -24,15 +23,4 @@ def load_assets():
         #assets[]
 
         pygame.mixer.music.load("assets//sons//barbie.wav")
-=======
-        
-        # ------Carrega sons do jogo
-        pygame.mixer.music.load("assets//sons//barbie.wav") #musica principal
-        pygame.mixer.music.set_volume(0.3) #nivel de som
-        assets['galinha_hit'] = pygame.mixer.Sound("assets//sons//galinhahit.wav")
-        assets['galinha_hit'].set_volume(som)
-        assets['pedra_hit'] = pygame.mixer.Sound("assets//sons//pedrahit.wav")
-        assets['sapo_hit'] = pygame.mixer.Sound("assets//sons//sapohit.wav")
-        assets['sapo_hit'].set_volume(som)
->>>>>>> 66d290b04e259568b9eaf95cf8d35cca24782ec3
         return assets
