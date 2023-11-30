@@ -27,7 +27,10 @@ def load_assets():
         pygame.mixer.music.set_volume(0.3) #nivel de som
         assets['galinha_hit'] = pygame.mixer.Sound("assets//sons//galinhahit.wav")
         assets['galinha_hit'].set_volume(som)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48d54fb9f4a523a7224938dd87373bd7f23fbd0c
         assets['sapo_hit'] = pygame.mixer.Sound("assets//sons//sapohit.wav")
         assets['sapo_hit'].set_volume(som)
         
