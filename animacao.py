@@ -77,13 +77,7 @@ while i<7:
     sapo_dic["hit"].append(sapohit)
     i+=1
 
-<<<<<<< HEAD
 
 #----dicionários com acoes dos personagens
 galinha = galinha_dic 
 sapo = sapo_dic
-=======
-#----dicionários com acoes dos personagens
-galinha = galinha_dic 
-sapo = sapo_dic
->>>>>>> 48d54fb9f4a523a7224938dd87373bd7f23fbd0c

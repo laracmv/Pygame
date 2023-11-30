@@ -4,10 +4,7 @@ from assets import load_assets
 from sprits import Jogador, Barradevida
 from animacao import * 
 
-vencedor = None
-
 def tela_de_jogo(tela):
-    global vencedor
 
     # funcao do jogo pra ajuste da velocidade
     clock = pygame.time.Clock()
@@ -25,8 +22,6 @@ def tela_de_jogo(tela):
     # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 980, 10) 
-    # barramanaj1 = BarraMana(assets, 30, 100, 1,2)
-    # barramanaj2 = BarraMana(assets, 980, 100, 2,1)
     all_sprites.add(jogador1)
     all_sprites.add(jogador2)
 
@@ -130,9 +125,6 @@ def tela_de_jogo(tela):
                 
         # Atualiza estado do jogo
         all_sprites.update()
-        # barramanaj1.update()
-        # barramanaj2.update()
-
 
         # Se o jogador 1 ou 2 perder toda vida o jogo acaba
         if jogador1.saude <= 0 or jogador2.saude <=0: 
@@ -157,8 +149,6 @@ def tela_de_jogo(tela):
         # Atualiza barra de vida
         barradevidaj1.desenhar_barra(tela, jogador1.saude)
         barradevidaj2.desenhar_barra(tela,jogador2.saude)
-        # barramanaj1.drawbarra(tela)
-        # barramanaj2.drawbarra(tela)
         # atualiza o temporizador
         tela.blit(timertexto, (650, 50))
     

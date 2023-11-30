@@ -10,16 +10,12 @@ PULANDO = 1
 CAINDO = 2
 
 class Jogador(pygame.sprite.Sprite):
-    # dicionario para a classe inteira, usado para criar um unico dicionario com numero de golpes consecutivos 
-    dicgolpes = {}
-
     def __init__(self,luta_dic, assets, x, y, tipojogador, tipooponente):
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
         self.tipojogador = tipojogador
         self.tipooponente = tipooponente
-        # self.image = assets[f'jogador{self.tipojogador}']
         self.img_index = 0
         self.atc_index = 0
         self.image = luta_dic['idle'][self.img_index]
@@ -42,10 +38,6 @@ class Jogador(pygame.sprite.Sprite):
         else:
             self.direcao = 'esquerda'
         
-        # adiciona os jogadores como chaves do dicionario e o numero de golpes como valores
-        if f'jogador{self.tipojogador}' not in Jogador.dicgolpes:
-            Jogador.dicgolpes[f'jogador{self.tipojogador}'] = 0
-
         # pode ou não bater
         self.ultima_porrada = pygame.time.get_ticks()
         # ultima defesa
@@ -129,9 +121,6 @@ class Jogador(pygame.sprite.Sprite):
             self.ultima_porrada = now
             if (pygame.sprite.collide_mask(jogador, oponente)):
                 oponente.saude -=10
-                # se conseguir bater adiciona mais um golpe no dic pro jogador e zera o oponente.
-                self.dicgolpes[f'jogador{self.tipojogador}'] +=1
-                self.dicgolpes[f'jogador{self.tipooponente}'] = 0
                 self.atc_index = 1
                 #toca o som de jogador batendo
                 if self.luta_dic == galinha:
