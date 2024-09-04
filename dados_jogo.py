@@ -27,7 +27,11 @@ FIM = 3
 # Som efeitos --------------
 som = 0.3
 
+# FONTE (adição de constante para tamanho de fonte da tela de início e de fim)
+T_FNT=60
 
+# VELOCIDADE (adicionar delta de velocidade que vai ser utilizado nas mudanças de movimento do personagem)
+DELTA_V=8
 
 
 

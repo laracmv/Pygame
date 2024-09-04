@@ -6,7 +6,7 @@ def tela_inicial(tela):
     clock = pygame.time.Clock()
 
     #trecho extraido de chat.openai.com
-    fonte = pygame.font.Font(None, 60)  # Você também pode fornecer o nome de uma fonte e o tamanho
+    fonte = pygame.font.Font(None, T_FNT)  # Você também pode fornecer o nome de uma fonte e o tamanho
 
     # Renderize o texto desejado
     texto = fonte.render("Aperte qualquer tecla para jogar!", True, white)

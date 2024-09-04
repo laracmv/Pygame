@@ -58,10 +58,10 @@ def tela_de_jogo(tela):
                     tecla_precionada[event.key] = True
                     # Teclas jogador 1
                     if event.key == pygame.K_a:
-                        jogador1.speedx -= 8
+                        jogador1.speedx -= DELTA_V
                         jogador1.direcao = 'esquerda' #serve para dizer para que lado ele esta indo
                     if event.key == pygame.K_d:
-                        jogador1.speedx += 8
+                        jogador1.speedx += DELTA_V
                         jogador1.direcao = 'direita' #serve para dizer para que lado ele esta indo
                     if event.key == pygame.K_w:
                         jogador1.pulo()
@@ -73,10 +73,10 @@ def tela_de_jogo(tela):
 
                     # Teclas jogador 2
                     if event.key == pygame.K_LEFT:
-                        jogador2.speedx -=8
+                        jogador2.speedx -=DELTA_V
                         jogador2.direcao = 'esquerda'
                     if event.key == pygame.K_RIGHT:
-                        jogador2.speedx +=8
+                        jogador2.speedx +=DELTA_V
                         jogador2.direcao = 'direita'
                     if event.key == pygame.K_UP:
                         jogador2.pulo()
@@ -91,17 +91,17 @@ def tela_de_jogo(tela):
                     if event.key in tecla_precionada and tecla_precionada[event.key]:
                         # Teclas jogador 1
                         if event.key == pygame.K_a:
-                            jogador1.speedx += 8
+                            jogador1.speedx += DELTA_V
                         if event.key == pygame.K_d:
-                            jogador1.speedx -= 8
+                            jogador1.speedx -= DELTA_V
                         if event.key == pygame.K_s:
                             jogador1.defende = False
 
                         # Teclas jogador 2
                         if event.key == pygame.K_LEFT:
-                            jogador2.speedx +=8
+                            jogador2.speedx +=DELTA_V
                         if event.key == pygame.K_RIGHT:
-                            jogador2.speedx -=8
+                            jogador2.speedx -=DELTA_V
                         if event.key == pygame.K_DOWN:
                             jogador2.defende = False
                 
