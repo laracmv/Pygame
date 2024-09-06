@@ -10,12 +10,10 @@ PULANDO = 1
 CAINDO = 2
 
 class Jogador(pygame.sprite.Sprite):
-    def __init__(self,luta_dic, assets, x, y, tipojogador, tipooponente):
+    def __init__(self,luta_dic, assets, x, y, ladojogador):#alteração de parâmetro para definir o lado dos personagens, tornando mais fácil por precisar de menos atributos
         # Construtor da classe mãe
         pygame.sprite.Sprite.__init__(self)
 
-        self.tipojogador = tipojogador
-        self.tipooponente = tipooponente
         self.img_index = 0
         self.atc_index = 0
         self.image = luta_dic['idle'][self.img_index]
@@ -31,12 +29,7 @@ class Jogador(pygame.sprite.Sprite):
         self.luta_dic = luta_dic
         self.j2ganhou = False
         self.j1ganhou = False
-
-        #define direcao inicial do jogador
-        if self.tipojogador == 1:
-            self.direcao = 'direita' 
-        else:
-            self.direcao = 'esquerda'
+        self.direcao=ladojogador # Exclusão do antigo if e else que ficava a abaixo e substituição pelo atributo gerado na criação
         
         # pode ou não bater
         self.ultima_porrada = pygame.time.get_ticks()

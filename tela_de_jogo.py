@@ -6,8 +6,8 @@ from animacao import *
 
 def criar_jogadores(assets, all_sprites):
     # Cria os jogadores
-    jogador1 = Jogador(sapo, assets, LARGURA / 4, ALTURA - 200, 1, 2)
-    jogador2 = Jogador(galinha, assets, LARGURA / 1.5, ALTURA - 10, 2, 1)
+    jogador1 = Jogador(sapo, assets, LARGURA / 4, ALTURA - 200, 'direita')
+    jogador2 = Jogador(galinha, assets, LARGURA / 1.5, ALTURA - 10, 'esquerda')
 
     barradevidaj1 = Barradevida(assets, 30, 10)
     barradevidaj2 = Barradevida(assets, 980, 10)
