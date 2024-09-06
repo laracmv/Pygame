@@ -4,6 +4,31 @@ from assets import load_assets
 from sprits import Jogador, Barradevida
 from animacao import * 
 
+def criar_jogadores(assets, all_sprites):
+    # Cria os jogadores
+    jogador1 = Jogador(sapo, assets, LARGURA / 4, ALTURA - 200, 'direita')
+    jogador2 = Jogador(galinha, assets, LARGURA / 1.5, ALTURA - 10, 'esquerda')
+
+    barradevidaj1 = Barradevida(assets, 30, 10)
+    barradevidaj2 = Barradevida(assets, 980, 10)
+
+    all_sprites.add(jogador1)
+    all_sprites.add(jogador2)
+
+    # Adiciona as barras de vida ao grupo de sprites
+    all_sprites.add(barradevidaj1)
+    all_sprites.add(barradevidaj2)
+
+    return jogador1, jogador2, barradevidaj1, barradevidaj2
+
+def configurar_timer(assets):
+    timerfonte = assets["tempo_fonte"]
+    timertexto = timerfonte.render("01:30", True, CORAL)
+    # userevent - evento personalidado o qual é associado com a variavel pygame.time.set_timer, possibilitando ter um delay de 1s a cada valor contado
+    timer = pygame.USEREVENT + 1
+    pygame.time.set_timer(timer, 1000)
+    return timertexto, timer, timerfonte
+
 def tela_de_jogo(tela):
 
     # funcao do jogo pra ajuste da velocidade
@@ -17,22 +42,12 @@ def tela_de_jogo(tela):
     groups['all_sprites'] = all_sprites
 
     #--- Criar jogadores 
-    jogador1 = Jogador(sapo, assets, LARGURA / 4, ALTURA - 200, 1,2)
-    jogador2 = Jogador(galinha, assets, LARGURA / 1.5, ALTURA - 10, 2,1)
-    # barradevida recebe o seu asset e posicao aonde ele vai ficar na tela
-    barradevidaj1 = Barradevida(assets, 30, 10)
-    barradevidaj2 = Barradevida(assets, 980, 10) 
-    all_sprites.add(jogador1)
-    all_sprites.add(jogador2)
+    jogador1, jogador2, barradevidaj1, barradevidaj2 = criar_jogadores(assets, all_sprites)
 
     # ---Dados da contagem regressiva do jogo
     timermin = 1
     timersegundos = 30
-    timerfonte = assets["tempo_fonte"]
-    timertexto = timerfonte.render("01:30", True, CORAL)
-    # userevent - evento personalidado o qual é associado com a variavel pygame.time.set_timer, possibilitando ter um delay de 1s a cada valor contado
-    timer = pygame.USEREVENT + 1
-    pygame.time.set_timer(timer, 1000)
+    timertexto,timer,timerfonte = configurar_timer(assets)
 
     MORTO = 0
     JOGANDO = 1

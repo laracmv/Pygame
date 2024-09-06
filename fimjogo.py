@@ -14,7 +14,7 @@ def tela_final(tela):
         ganhador = 'Galinha'
 
     #trecho extraido de chat.openai.com
-    fonte = pygame.font.Font(None, 60)  # Você também pode fornecer o nome de uma fonte e o tamanho
+    fonte = pygame.font.Font(None, T_FNT)  # Você também pode fornecer o nome de uma fonte e o tamanho
 
     # Renderize o texto desejado
     texto = fonte.render(f" {ganhador} Ganhou! Tecle cima para jogar e baixo para fechar", True, white)
